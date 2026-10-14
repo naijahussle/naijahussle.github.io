@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Naija Hustle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&display=swap" rel="stylesheet">
+<style>
+:root{--s1:#BFE0FA;--sk:#8FB4D6;--sg:linear-gradient(180deg,#8FCBF5 0%,#CFE6F8 55%,#FFE1BD 100%);--acc:var(--green);--acci:var(--gi);--en:#4FB3FF;--fd:#FF8A3D;--s2:#EEF6FF;--ink:#1B2233;--card:#FFFFFF;--soft:#EEF1F7;--green:#1DB36B;--gi:#fff;--red:#D63B3B;--line:#1B223322;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--s1:#1C3A2B;--sk:#261C3F;--sg:linear-gradient(180deg,#223A73 0%,#6B4A9E 55%,#F08A4B 100%);--acc:var(--green);--acci:var(--gi);--en:#4FB3FF;--fd:#FF8A3D;--s2:#0E1A13;--ink:#F2F7EE;--card:#17261D;--soft:#223629;--green:#2BD085;--gi:#06210F;--red:#FF7B72;--line:#F2F7EE33}}
+:root[data-theme="dark"]{--s1:#1C3A2B;--sk:#261C3F;--sg:linear-gradient(180deg,#223A73 0%,#6B4A9E 55%,#F08A4B 100%);--acc:var(--green);--acci:var(--gi);--en:#4FB3FF;--fd:#FF8A3D;--s2:#0E1A13;--ink:#F2F7EE;--card:#17261D;--soft:#223629;--green:#2BD085;--gi:#06210F;--red:#FF7B72;--line:#F2F7EE33}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--s2) linear-gradient(var(--s1),var(--s2) 70%) fixed;color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:500;line-height:1.4;min-height:100vh}
+.stripe{height:10px;background:repeating-linear-gradient(90deg,#121212 0 18px,#F7C51E 18px 36px)}
+.wrap{max-width:480px;margin:0 auto;padding:0 14px 120px}
+h1{font-weight:800;font-size:38px;line-height:1;margin:26px 0 6px;letter-spacing:-.5px}
+h2{font-weight:800;font-size:22px;margin:0 0 4px}
+p{margin:0 0 10px}.sub{opacity:.7;font-size:14px}.center{text-align:center}
+.card{background:var(--card);border-radius:24px;padding:16px;margin:12px 0;box-shadow:0 6px 24px #0000001a}
+.sheet{position:relative;z-index:5;background:var(--card);border-radius:28px 28px 0 0;padding:16px;margin:0 -14px;box-shadow:0 -6px 24px #0000001a;min-height:320px}
+label{display:block;font-size:14px;margin:12px 0 4px}
+input,select{width:100%;font:inherit;padding:13px 14px;border:0;border-radius:16px;background:var(--soft);color:var(--ink)}
+.btn{display:block;width:100%;font:inherit;font-weight:800;padding:15px;border:0;border-radius:99px;background:var(--acc);color:var(--acci);cursor:pointer;margin-top:12px;text-align:center}
+.btn.alt{background:var(--soft);color:var(--ink)}.btn:disabled{opacity:.4}
+.btn:focus-visible,.chip:focus-visible,.row:focus-visible,.tab:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.chip{font:inherit;padding:9px 14px;border:0;border-radius:99px;background:var(--soft);color:var(--ink);cursor:pointer}
+.chip.on{background:var(--acc);color:var(--acci);font-weight:800}
+.sw{width:34px;height:34px;padding:0;border:2px solid var(--card)}.sw.on{outline:3px solid var(--ink)}
+.err{color:var(--red);font-size:14px;min-height:20px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;font:inherit;text-align:left;padding:13px 15px;border:0;border-radius:20px;background:var(--soft);color:var(--ink);margin-bottom:8px;cursor:pointer}
+.row small{display:block;opacity:.65}
+.stage{position:sticky;top:0;z-index:1;text-align:center;padding-top:8px;margin:0 -14px;overflow:hidden}
+.stage svg{display:block;margin:0 auto}
+.room{position:relative;height:260px;border-radius:24px;overflow:hidden;margin:6px 0 12px;box-shadow:0 6px 24px #0000001a}.room>svg{position:absolute;inset:0;width:100%;height:100%}.room .av{position:absolute;left:50%;bottom:6px;transform:translateX(-50%)}.room .av svg{display:block}
+.stats{display:flex;gap:18px;justify-content:center;font-size:13px;margin:8px 0 0}
+.dash{display:flex;gap:6px;justify-content:center;margin:6px 24px}
+.dash i{flex:1;height:5px;border-radius:9px;background:var(--line)}.dash i.on{background:var(--acc)}
+.foot{position:sticky;bottom:0;z-index:6;background:var(--card);margin:0 -14px;padding:6px 14px calc(12px + env(safe-area-inset-bottom,0px))}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--card);border-radius:99px;padding:10px 16px;margin-top:12px;box-shadow:0 6px 20px #00000014}
+.bal{font-weight:800;font-size:19px;color:var(--green)}
+.bar{height:8px;width:90px;border-radius:9px;background:var(--soft);overflow:hidden;display:inline-block;vertical-align:middle;margin-left:6px}.bar i{display:block;height:100%;background:var(--green)}
+.gist{background:var(--ink);color:var(--card);border-radius:20px;padding:10px 14px;margin:10px 0;font-size:14px}
+.tabs{position:fixed;left:0;right:0;bottom:calc(10px + env(safe-area-inset-bottom,0px));max-width:452px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:var(--card);border-radius:99px;padding:6px;box-shadow:0 8px 28px #0000002e;z-index:9}
+.tab{font:inherit;border:0;border-radius:99px;padding:11px 4px;background:none;color:var(--ink);cursor:pointer}.tab.on{background:var(--ink);color:var(--card);font-weight:800}
+.big{font-size:44px;font-weight:800;line-height:1.05}
+@media (prefers-reduced-motion:no-preference){.pop{animation:pop .35s ease-out}@keyframes pop{from{transform:scale(.92);opacity:0}to{transform:none;opacity:1}}}
+.row:disabled{opacity:.45;cursor:default}
+.fx{position:absolute;left:50%;top:14px;font-weight:800;color:var(--green);background:var(--card);padding:4px 12px;border-radius:99px;white-space:nowrap;z-index:2}
+.room.night::after{content:"";position:absolute;inset:0;background:#0a1020;opacity:0}
+@media (prefers-reduced-motion:no-preference){
+.a-work{animation:wk .5s ease-in-out 2}@keyframes wk{0%,100%{transform:translateX(-50%) rotate(0)}25%{transform:translateX(-50%) translateY(-6px) rotate(-3deg)}75%{transform:translateX(-50%) translateY(-6px) rotate(3deg)}}
+.a-eat{animation:et .35s ease-in-out 3}@keyframes et{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.05,.96)}}
+.a-sleep{animation:sl 1.8s ease-in-out}@keyframes sl{0%{transform:translateX(-50%)}30%{transform:translateX(calc(-50% - 150px))}45%,85%{transform:translateX(calc(-50% - 150px)) translateY(-40px) rotate(-90deg)}100%{transform:translateX(-50%)}}
+.fx{animation:fx 1s ease-out forwards}@keyframes fx{from{opacity:1;transform:translate(-50%,0)}to{opacity:0;transform:translate(-50%,-30px)}}
+.room.night::after{animation:nt 1.8s ease-in-out forwards}@keyframes nt{0%{opacity:0}40%,80%{opacity:.55}100%{opacity:0}}}
+.stage .bg{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.stage>*:not(.bg){position:relative;z-index:1}
+.moonc{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sunc{display:none}:root:not([data-theme="light"]) .moonc{display:block}}
+:root[data-theme="dark"] .sunc{display:none}:root[data-theme="dark"] .moonc{display:block}
+.hico{flex:0 0 58px;height:48px;display:block}
+.bub{position:absolute;left:12px;right:12px;top:10px;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;border-radius:18px;background:rgba(15,25,20,.42);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.4);color:#fff;font-size:14px;line-height:1.3;text-shadow:0 1px 3px #0008}
+.bub span{font-weight:800;white-space:nowrap}
+.room.dim::before{content:"";position:absolute;inset:0;background:#05080f;opacity:.45;z-index:2}
+@media (prefers-reduced-motion:no-preference){
+.cl1{animation:dr 38s linear infinite}.cl2{animation:dr 55s linear infinite reverse}@keyframes dr{from{transform:translateX(-80px)}to{transform:translateX(420px)}}
+.fan{transform-origin:196px 24px;animation:spin 1.1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.tv{animation:tv 1.6s steps(2) infinite}@keyframes tv{0%{fill:#7FB8FF}50%{fill:#B9D8FF}100%{fill:#7FB8FF}}
+.room .av svg{transform-origin:50% 100%;animation:br 3.2s ease-in-out infinite}@keyframes br{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.014)}}
+.room.dim::before{animation:fl 2.4s steps(1) infinite}@keyframes fl{0%{opacity:.5}25%{opacity:.25}50%{opacity:.5}75%{opacity:.35}100%{opacity:.5}}}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.duoc{border-radius:20px;padding:11px 8px;text-align:center;font-weight:800}.duoc small{display:block;font-size:12px;font-weight:500;opacity:.7}
+.apps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px}.app{font:inherit;font-weight:800;border:0;border-radius:20px;padding:20px 6px;color:#fff;cursor:pointer}
+.app:nth-child(1){background:#1DB36B}.app:nth-child(2){background:#2F6FDE}.app:nth-child(3){background:#8B5CF6}.app:nth-child(4){background:#F28C28}.app:nth-child(5){background:#EC4899}
+.keys{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}.keys button{font:inherit;font-weight:800;font-size:20px;padding:14px 0;border:0;border-radius:16px;background:var(--soft);color:var(--ink);cursor:pointer}.keys .op{background:var(--acc);color:var(--acci)}
+.disp{background:var(--soft);border-radius:16px;padding:14px;text-align:right;font-size:28px;font-weight:800;min-height:62px;overflow:hidden;margin-top:10px}
+.map{width:100%;border-radius:18px;display:block;margin:10px 0}
+.tx{display:flex;justify-content:space-between;gap:10px;font-size:14px;padding:7px 0;border-bottom:1px solid var(--line)}.up{color:var(--green)}.dn{color:var(--red)}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}.cardi{font:inherit;color:var(--ink);background:var(--soft);border:0;border-radius:20px;padding:12px 8px;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px}.cardi small{opacity:.7;font-size:12px;line-height:1.2}.cardi .pr{font-weight:800;color:var(--green);margin-top:2px}.cardi:disabled{opacity:.55;cursor:default}
+.phone{background:linear-gradient(165deg,#173B2C 0%,#1F6F6B 45%,#E8743B 100%);border-radius:34px;padding:22px 16px 26px;color:#fff;min-height:440px}.clk{font-size:68px;font-weight:800;line-height:1}.pd{opacity:.85;margin:6px 0 20px}
+.apps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px 6px}.appi{font:inherit;background:none;border:0;color:#fff;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;cursor:pointer}.sq{position:relative;width:60px;height:60px;border-radius:18px;display:flex;align-items:center;justify-content:center}.sq em{position:absolute;top:-6px;right:-8px;background:#fff;color:#1B2233;font-size:9px;font-style:normal;font-weight:800;border-radius:99px;padding:2px 6px}
+.pscr{background:var(--card);color:var(--ink);border-radius:22px;padding:14px;margin-top:12px}
+.jc{display:block;width:100%;text-align:left;font:inherit;color:var(--ink);background:var(--soft);border:0;border-radius:20px;padding:14px;margin-bottom:10px;cursor:pointer}.jc p{margin:6px 0 10px;opacity:.8;font-size:14px}.jt{display:flex;justify-content:space-between;gap:8px;align-items:center}.tag{font-size:12px;background:var(--card);border-radius:99px;padding:3px 10px;white-space:nowrap}.jm{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;font-size:12px}.jm span{display:flex;flex-direction:column}.jm b{font-size:14px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);z-index:30;display:flex;align-items:center;justify-content:center;padding:20px}.mbox{background:var(--card);color:var(--ink);border-radius:28px;padding:20px;max-width:360px;width:100%;text-align:center}.mbox svg{height:110px;width:auto;display:block;margin:0 auto}
+</style>
+</head>
+<body>
+<div class="stripe" aria-hidden="true"></div>
+<div class="wrap" id="app"></div>
+<script>
+const STATES=["Abia","Adamawa","Akwa Ibom","Anambra","Bauchi","Bayelsa","Benue","Borno","Cross River","Delta","Ebonyi","Edo","Ekiti","Enugu","FCT Abuja","Gombe","Imo","Jigawa","Kaduna","Kano","Katsina","Kebbi","Kogi","Kwara","Lagos","Nasarawa","Niger","Ogun","Ondo","Osun","Oyo","Plateau","Rivers","Sokoto","Taraba","Yobe","Zamfara"];
+const TRAITS=["Hustle Pro","Strong Body","Jollof Lover","Shaker","Mouth Sweet","Sleep Lord","Fresh Always","Midnight Person","Code Head","Studio Ears"];
+const HW=["Braids","Afro","Bun","Ponytail","Gele","Long"],HM=["Low cut","Afro","Locs","Bald"];
+const OUT=["Casual","Office","Site work"],FAB=["Plain","Ankara"];
+const SKIN=["#E0B08A","#C68A5E","#A5683F","#7A4B2A","#4E2F1B"];
+const COLS=["#E24B3B","#1DB36B","#2F6FDE","#F28C28","#8B5CF6","#EC4899"];
+const AREAS={"Abia":["Ariaria","Ngwa Road","Umuahia Town","Aba South","Aba GRA"],"Adamawa":["Jimeta","Karewa","Yola Town","Mubi","Yola GRA"],"Akwa Ibom":["Itam","Ikot Ekpene Road","Ewet Housing","Shelter Afrique","Ibom Layout"],"Anambra":["Fegge","Onitsha Main Market","Nnewi","Awka Town","Onitsha GRA"],"Bauchi":["Yelwa","Wunti","Bauchi Town","Federal Low-Cost","Bauchi GRA"],"Bayelsa":["Okutukutu","Ekeki","Amarata","Opolo","Yenagoa GRA"],"Benue":["Wadata","North Bank","High Level","Makurdi Town","Makurdi GRA"],"Borno":["Bulumkutu","Gwange","Maiduguri Town","Old GRA","New GRA"],"Cross River":["Ekpo Abasi","Ikot Ansa","Marian","Calabar South","Diamond Hill"],"Delta":["Warri Market","Effurun","Okpanam Road","Asaba Town","Asaba GRA"],"Ebonyi":["Abakpa","Ezzamgbo","Ndibe","Abakaliki Town","Abakaliki GRA"],"Edo":["Oka","Ikpoba Hill","Ugbowo","Ring Road","Benin GRA"],"Ekiti":["Ajilosun","Okeyinmi","Ado Town","Adebayo","Ado GRA"],"Enugu":["Ngwo","Abakpa Nike","Independence Layout","Trans Ekulu","Enugu GRA"],"FCT Abuja":["Kubwa","Galadimawa","Gwarinpa","Wuse 2","Maitama"],"Gombe":["Pantami","Tudun Wada","Gombe Town","Jekadafari","Gombe GRA"],"Imo":["Egbu","Aladinma","Ikenegbu","Owerri Town","New Owerri"],"Jigawa":["Gida Dubu","Hadejia","Birnin Kudu","Dutse Town","Dutse GRA"],"Kaduna":["Tudun Wada","Kawo","Barnawa","Ungwan Rimi","Malali"],"Kano":["Fagge","Sabon Gari","Bompai","Nasarawa GRA","Kano GRA"],"Katsina":["Kofar Marusa","Kofar Kaura","Katsina Town","Government Road","Katsina GRA"],"Kebbi":["Kalgo Road","Gwadangaji","Nassarawa","Birnin Kebbi Town","Kebbi GRA"],"Kogi":["Felele","Adankolo","Ganaja","Lokoja Town","Lokoja GRA"],"Kwara":["Oja Oba","Taiwo Road","Tanke","Fate Road","Ilorin GRA"],"Lagos":["Ajegunle","Ikorodu","Surulere","Ikeja","Lekki"],"Nasarawa":["Masaka","Mararaba","Karu","Lafia Town","Lafia GRA"],"Niger":["Chanchaga","Bosso","Tunga","Minna Town","Minna GRA"],"Ogun":["Ota","Sagamu","Ijebu Ode","Abeokuta Town","Ibara GRA"],"Ondo":["Oba-Ile","Ijapo","Akure Town","Alagbaka","Akure GRA"],"Osun":["Oke Fia","Ota Efun","Osogbo Town","Ile-Ife","Osogbo GRA"],"Oyo":["Mokola","Dugbe","Challenge","Bodija","Jericho"],"Plateau":["Angwan Rukuba","Bukuru","Jos Town","Rayfield","Jos GRA"],"Rivers":["Diobu","Rumuokoro","Rumuola","Trans Amadi","Old GRA"],"Sokoto":["Mabera","Gawon Nama","Sokoto Town","Runjin Sambo","Sokoto GRA"],"Taraba":["Mayo Gwoi","Kachalla Sembe","Jalingo Town","Sabon Gari","Jalingo GRA"],"Yobe":["Sabon Pegi","Nayinawa","Damaturu Town","Gujba Road","Damaturu GRA"],"Zamfara":["Tudun Wada","Sabon Gari","Gusau Town","Mada Road","Gusau GRA"]};
+const RENTS=[12000,25000,50000,90000,160000],HN=["Single room","Room and parlour","Mini flat","2-bedroom flat","Serviced flat"],HD=["One room. Shared bathroom, shared wahala.","Room and parlour. Your own door at last.","Mini flat. Light most days.","Two bedrooms and a gateman.","Serviced flat. Your own light, day and night."];
+let T=0;
+const RENTN=[80000,120000,180000,260000,400000],HNN=["Mini flat","2-bedroom flat","3-bedroom flat","Duplex","Penthouse"],HDN=["Neat mini flat. Quiet street, steady light.","Two bedrooms behind a gate.","Three bedrooms, a driver's room and a gen.","Your own duplex with a compound.","The whole top floor. Your own lift."];
+const rents=()=>S.birth==="Nepo"?RENTN:RENTS,hnames=()=>S.birth==="Nepo"?HNN:HN;
+const ITEMS=[["chair","Plastic chair",3500,"Furniture","A seat that is yours."],["fan","Ceiling fan",38000,"Furniture","Cools the room and looks good."],["ac","Air conditioner",520000,"Furniture","Sleeping hungry still gives 80 energy."],["bed1","Foam mattress",45000,"Furniture","Sleep restores 90 energy."],["bed2","Bed and mattress",120000,"Furniture","Sleep restores full energy."],["bed3","King bed",400000,"Furniture","Full energy and a proper flex."],["wardrobe","Wardrobe",90000,"Furniture","Space for your drip."],["tv1","Small TV",120000,"Furniture","Evenings sorted."],["tv2","TV and stand",260000,"Furniture","A proper screen."],["tv3","Big smart TV",700000,"Furniture","Cinema at home."],["console","Game console",950000,"Furniture","Gamers and streamers earn 15% more."],["sofa1","Two-seater",120000,"Furniture","Somewhere to sit."],["sofa2","Sofa set",350000,"Furniture","Guests can sit now."],["sofa3","Leather lounge set",900000,"Furniture","Serious flex."],["fridge1","Table-top fridge",180000,"Furniture","Meals give 5 extra food."],["fridge2","Fridge",280000,"Furniture","Meals give 10 extra food."],["fridge3","Double-door fridge",650000,"Furniture","Meals give 15 extra food."],["dtable","Dining table",120000,"Furniture","Eat like an oga."],["gen","Generator",180000,"Furniture","NEPA no longer costs you."],["rug","Rug",25000,"Furniture","Ties the room together."],["plant","Plant",6000,"Furniture","Fresh air."],["poster","Wall poster",8000,"Furniture","Something to look at."],
+["o_hood","Street hoodie set",85000,"Clothes","Hoodie and baggy jeans."],["o_guchi","Guchi designer hoodie",350000,"Clothes","Logo hoodie, black baggy jeans."],["o_native","Native kaftan set",120000,"Clothes","Kaftan with gold trim."],["o_night","Night-out outfit",70000,"Clothes","Dressed to be seen after dark."],["a_beanie","Head warmer",8000,"Clothes","A beanie for the street look."],["a_fila","Fila cap",12000,"Clothes","A classic cap."],["a_chain","Gold chain",150000,"Clothes","Shines on any outfit."],["f_adi","Adire fabric",15000,"Clothes","Wear Adire on your outfit."],["f_aso","Aso-oke fabric",60000,"Clothes","Wear Aso-oke on your outfit."],
+["p0","Button phone",15000,"Phones","Only calls. Respect."],["p1","Tecknu Spark",120000,"Phones","Cheap and strong battery."],["p2","Infinex Hot",210000,"Phones","Big screen, small price."],["p3","Galaxia S24",1400000,"Phones","A serious Android."],["p4","iFone 18 Air",2600000,"Phones","Thin and silver."],["p5","iFone 18 Pro Max",4200000,"Phones","The one everybody notices."],["p6","Pixelo 10 Pro",3400000,"Phones","Clean camera, clean flex."],["p7","iFone 18 Gold Edition",7500000,"Phones","Gold back. Everybody will look."],
+["o_suit","Executive suit",450000,"Clothes","Sharp blazer for the boardroom."],["o_agbada","Agbada set",800000,"Clothes","Flowing agbada. Big oga energy."],["o_party","Owambe party outfit",260000,"Clothes","Gold and shine for the weekend."],["o_track","Designer tracksuit",180000,"Clothes","Matching set. Street royalty."],
+["lamp","Floor lamp",35000,"Furniture","Soft light for the room."],["shelf","Bookshelf",150000,"Furniture","Books, trophies and show-off space."],["sound","Home theatre bar",600000,"Furniture","Sound that shakes the compound."],
+["c_keke","Used keke",1800000,"Cars","Your own wheels."],["c_corolla","Tokunbo Corolla",6500000,"Cars","Clean and reliable."],["c_camry","Camry Muscle",12000000,"Cars","Smooth ride for the boys."],["c_lexus","Lexus jeep",28000000,"Cars","Big jeep, big respect."],["c_benz","Benz G-Wagon",85000000,"Cars","Heads turn on every road."],["c_roll","Rolls-Royce",350000000,"Cars","The final flex."]];
+const PRICE={};ITEMS.forEach(x=>{PRICE[x[0]]=x[2]});
+const HP=i=>i<5?rents()[i]*60:[250000000,1500000000][i-5],HN2=i=>i<5?hnames()[i]:["Mansion","Gated estate"][i-5];
+const HPX=i=>HP(i);
+const rentFull=()=>Math.max(0,4-(S.rp||0))*rentNow()*2;
+const OV={Suit:["Office","#1F2A44"],Agbada:["Native","#F2EAD3"],Party:["Night","#C9A227"],Track:["Street","#111827"]};
+const NW=()=>Math.round(S.cash+(S.own||[]).reduce((a,id)=>a+(PRICE[id]||0)*.7,0)+(S.hm&&S.hm.own?HP(S.hm.i):0)-S.debt);
+const VB={chair:"116 132 24 40",fan:"164 0 64 32",wardrobe:"324 58 38 114",rug:"118 216 164 30",plant:"230 112 28 58",poster:"204 34 42 54",gen:"282 182 54 46"};
+const CI={o_hood:'<path d="M10 8Q20 2 30 8L36 14V34H4V14Z" fill="#E24B3B"/><path d="M14 8Q20 14 26 8" fill="#C0392B"/><rect x="13" y="24" width="14" height="8" rx="2" fill="#000" fill-opacity=".18"/>',o_guchi:'<path d="M10 8Q20 2 30 8L36 14V34H4V14Z" fill="#1B1B1F"/><path d="M20 14l4 5-4 5-4-5z" fill="#D4AF37"/>',o_native:'<path d="M12 4H28L34 12V36H6V12Z" fill="#8B5CF6"/><rect x="19" y="4" width="2" height="32" fill="#D4AF37"/><path d="M14 4Q20 12 26 4" stroke="#D4AF37" stroke-width="2" fill="none"/>',o_night:'<path d="M13 4H27L25 18L30 36H10L15 18Z" fill="#EC4899"/>',a_beanie:'<path d="M8 26Q8 8 20 8Q32 8 32 26Z" fill="#E24B3B"/><rect x="6" y="24" width="28" height="6" rx="3" fill="#B73A2D"/><circle cx="20" cy="7" r="3" fill="#fff"/>',a_fila:'<path d="M8 24Q8 10 20 10Q32 10 32 24Z" fill="#1F6F3B"/><rect x="6" y="22" width="28" height="4" rx="2" fill="#fff"/><rect x="26" y="22" width="12" height="4" rx="2" fill="#14532D"/>',a_chain:'<path d="M8 10Q20 36 32 10" stroke="#D4AF37" stroke-width="4" fill="none"/><circle cx="20" cy="27" r="4" fill="#D4AF37"/>'};
+const CARI=(c,r)=>'<rect x="3" y="19" width="34" height="11" rx="4" fill="'+c+'"/><path d="M9 19L13 11H27L31 19Z" fill="'+c+'"/><path d="M13.5 12H20V19H11ZM22 12H26.5L29.5 19H22Z" fill="#CFE8FF"/><circle cx="11" cy="31" r="4" fill="#222"/><circle cx="29" cy="31" r="4" fill="#222"/>'+(r||"");
+Object.assign(CI,{o_suit:'<path d="M12 4H28L34 12V36H6V12Z" fill="#1F2A44"/><path d="M20 10L15 36H25Z" fill="#fff"/><path d="M18.5 14H21.5L21 30H19Z" fill="#7A1F2B"/>',o_agbada:'<path d="M8 4H32L38 14V36H2V14Z" fill="#F2EAD3"/><rect x="2" y="30" width="36" height="3" fill="#D4AF37"/><path d="M14 4Q20 14 26 4" stroke="#D4AF37" stroke-width="2" fill="none"/>',o_party:'<path d="M13 4H27L25 18L31 36H9L15 18Z" fill="#C9A227"/><circle cx="18" cy="26" r="1.5" fill="#fff"/><circle cx="23" cy="30" r="1.5" fill="#fff"/>',o_track:'<path d="M10 8Q20 2 30 8L36 14V34H4V14Z" fill="#111827"/><rect x="19" y="8" width="2" height="26" fill="#fff"/><rect x="6" y="16" width="3" height="16" fill="#fff"/><rect x="31" y="16" width="3" height="16" fill="#fff"/>',c_keke:CARI("#F7C51E",'<rect x="9" y="8" width="22" height="3" fill="#222"/>'),c_corolla:CARI("#9AA7B2"),c_camry:CARI("#1F2A44"),c_lexus:CARI("#1B1B1F",'<rect x="3" y="16" width="34" height="4" rx="2" fill="#D4AF37"/>'),c_benz:CARI("#2F3E3A"),c_roll:CARI("#E8E1D0",'<rect x="3" y="24" width="34" height="2" fill="#D4AF37"/>')});
+function phoneSvg(k){if(k==="p0")return '<svg viewBox="0 0 30 50" height="64" aria-hidden="true"><rect x="5" y="2" width="20" height="46" rx="4" fill="#3A3F47"/><rect x="8" y="6" width="14" height="12" fill="#9AD0A4"/>'+[0,1,2].map(r=>[0,1,2].map(q=>'<rect x="'+(9+q*5)+'" y="'+(24+r*7)+'" width="4" height="4" rx="1" fill="#CBD2D9"/>').join("")).join("")+'</svg>';
+ const m={p1:["#2B2F36",1],p2:["#6B3FA0",2],p3:["#1F2937",3],p4:["#C9CED6",1],p5:["#5A5F66",3],p6:["#1E3A5F",3],p7:["#D4AF37",3]}[k]||["#2B2F36",1];let L2="";
+ if(m[1]===1)L2='<circle cx="11" cy="11" r="3.2" fill="#0b0b0e" stroke="#555"/>';
+ if(m[1]===2)L2='<circle cx="10" cy="10" r="3" fill="#0b0b0e"/><circle cx="10" cy="17" r="3" fill="#0b0b0e"/>';
+ if(m[1]===3)L2='<rect x="7" y="6" width="9" height="20" rx="4.5" fill="#0b0b0e" fill-opacity=".85"/><circle cx="11.5" cy="11" r="2.4" fill="#3b3f46"/><circle cx="11.5" cy="16" r="2.4" fill="#3b3f46"/><circle cx="11.5" cy="21" r="2.4" fill="#3b3f46"/>';
+ return '<svg viewBox="0 0 30 50" height="64" aria-hidden="true"><rect x="3" y="2" width="24" height="46" rx="6" fill="'+m[0]+'"/>'+L2+(k==="p4"||k==="p5"?'<circle cx="19" cy="37" r="3" fill="#fff" fill-opacity=".6"/>':"")+'</svg>'}
+function drawOf(k){const g=GRP[k]||k;
+ if(g==="bed")return [k==="bed3"?bed3():k==="bed2"?ISV.bed:ISV.mat,k==="bed1"?"10 146 108 26":"10 112 112 70"];
+ if(g==="tv"){const t=k==="tv3"?[54,34]:k==="tv2"?[40,26]:[30,20];return [tvSvg(t[0],t[1]),"126 100 68 82"]}
+ if(g==="sofa")return [sofaSvg(+k.slice(-1)),"6 184 110 48"];
+ if(g==="fridge")return [fridgeSvg(+k.slice(-1)),"192 86 48 88"];
+ if(ISV2[k])return [ISV2[k],VB2[k]];return [ISV[k],VB[k]]}
+function icon(k){if(CI[k])return '<svg viewBox="0 0 40 40" height="64" aria-hidden="true">'+CI[k]+'</svg>';
+ if(k==="f_adi"||k==="f_aso")return '<svg viewBox="0 0 40 40" height="64" aria-hidden="true"><defs><pattern id="'+k+'" width="8" height="8" patternUnits="userSpaceOnUse">'+(k==="f_adi"?'<path d="M0 8L8 0" stroke="#fff" stroke-opacity=".6" stroke-width="2"/>':'<rect width="3" height="8" fill="#fff" fill-opacity=".5"/>')+'</pattern></defs><rect width="40" height="40" rx="8" fill="'+(k==="f_adi"?"#2F6FDE":"#8B5CF6")+'"/><rect width="40" height="40" rx="8" fill="url(#'+k+')"/></svg>';
+ if(/^p\d$/.test(k))return phoneSvg(k);const d=drawOf(k);return '<svg viewBox="'+d[1]+'" height="64" aria-hidden="true">'+d[0]+'</svg>'}
+const card=(act,v,ic,nm,sm,pr,off)=>'<button class="cardi" data-a="'+act+'" data-v="'+v+'"'+(off?" disabled":"")+'>'+ic+'<b>'+nm+'</b><small>'+sm+'</small><span class="pr">'+pr+'</span></button>';
+const wc=(k,list,cur)=>'<div class="chips">'+list.map(x=>'<button class="chip'+(cur===x?" on":"")+'" data-a="wear" data-v="'+k+':'+x+'">'+x+'</button>').join("")+'</div>';
+function buyBody(){const cats=["Furniture","Clothes","Phones","Cars","Houses"],c=S.bc||"Furniture",L=S.look;let list="";
+ if(c==="Houses"){const own=S.hm&&S.hm.own;const lk=(S.rp||0)<4&&!own;list='<p class="sub">Own it and rent is gone for good. '+(lk?"Houses open after 4 weeks of rent. Paid so far: "+(S.rp||0)+".":"Houses are open to you.")+'</p>'+(lk&&S.hm?'<button class="btn alt" data-a="payrent"'+(S.cash>=rentFull()?"":" disabled")+'>Pay rent in full now: '+fmt(rentFull())+'</button>':"")+'<div class="cards">'+[0,1,2,3,4,5,6].map(i=>{const mine=own&&S.hm.i===i;return card("bh",i,hart(i),HN2(i),A()[Math.min(i,4)],mine?"You own this":lk?"Locked":fmt(HPX(i)),mine||lk)}).join("")+'</div>'}
+ else{if(c==="Clothes"){const O=OUT.concat(Object.keys(AW).filter(k=>AW[k][0]==="out"&&has(k)).map(k=>AW[k][1])),F=["Plain","Ankara"].concat(has("f_adi")?["Adire"]:[],has("f_aso")?["Aso-oke"]:[]),Hh=["None"].concat(has("a_beanie")?["Beanie"]:[],has("a_fila")?["Fila"]:[]);
+   list='<p class="sub">Wearing: outfit</p>'+wc("out",O,L.out)+'<p class="sub">Fabric</p>'+wc("fab",F,L.fab)+'<p class="sub">Head</p>'+wc("hat",Hh,L.hat||"None")+(has("a_chain")?'<p class="sub">Chain</p>'+wc("ch",["Off","On"],L.ch?"On":"Off"):"")}
+  if(c==="Phones")list='<p class="sub">You have: '+(S.ph||"Basic phone")+'</p>';
+  if(c==="Cars")list='<p class="sub">Own any car and your job transport costs halve. You have: '+(S.cr||"no car")+'</p>';
+  list+='<div class="cards">'+ITEMS.filter(x=>x[3]===c).map(x=>{const o=(S.own||[]).includes(x[0]);return card("buy",x[0],icon(x[0]),x[1],x[4],o?"Owned":fmt(x[2]),o)}).join("")+'</div>'}
+ return '<h2>Buy</h2><div class="chips">'+cats.map(k=>'<button class="chip'+(c===k?" on":"")+'" data-a="bc" data-v="'+k+'">'+k+'</button>').join("")+'</div>'+list}
+function modal(){if(!S.cf)return"";const id=S.cf;let ic,nm,sm,pr;
+ if(id.indexOf("h:")===0){const i=+id.slice(2);ic=hart(i);nm=HN2(i);sm="In "+A()[Math.min(i,4)]+". No more rent once it's yours.";pr=HPX(i)}
+ else{const x=ITEMS.find(q=>q[0]===id);if(!x)return"";ic=icon(id);nm=x[1];sm=x[4];pr=x[2]}
+ return '<div class="modal"><div class="mbox">'+ic+'<h2 style="margin-top:8px">'+nm+'</h2><p class="sub">'+sm+'</p><div class="bal" style="font-size:28px">'+fmt(pr)+'</div><p class="sub">You have '+fmt(S.cash)+'</p><button class="btn" data-a="cfy">Buy</button><button class="btn alt" data-a="cfn">Cancel</button></div></div>'}
+const AW={o_suit:["out","Suit"],o_agbada:["out","Agbada"],o_party:["out","Party"],o_track:["out","Track"],o_hood:["out","Street"],o_guchi:["out","Guchi"],o_native:["out","Native"],o_night:["out","Night"],a_beanie:["hat","Beanie"],a_fila:["hat","Fila"],a_chain:["ch",true],f_adi:["fab","Adire"],f_aso:["fab","Aso-oke"]};
+function doBuy(v){const x=ITEMS.find(i=>i[0]===v);if(!x)return;if((S.own||[]).includes(v)){S.log="You already own that.";return}
+ if(S.cash<x[2]){S.log="You can't afford the "+x[1].toLowerCase()+" yet.";startShort(x[2]-S.cash,"the "+x[1].toLowerCase());return}
+ S.cash-=x[2];S.own=(S.own||[]).concat(v);if(AW[v])S.look[AW[v][0]]=AW[v][1];if(x[3]==="Phones")S.ph=x[1];if(x[3]==="Cars")S.cr=x[1];S.log="You bought the "+x[1].toLowerCase()+" for "+fmt(x[2])+"."}
+function doBuyHouse(i){if((S.rp||0)<4&&!(S.hm&&S.hm.own)){S.log="Pay 4 weeks of rent first, or pay your rent in full.";return}const pr=HPX(i);if(S.cash<pr){S.log="You can't afford that house yet.";startShort(pr-S.cash,"the "+HN2(i).toLowerCase());return}
+ S.cash-=pr;S.hm={i:i,rent:i<5?rents()[i]:0,own:true,name:HN2(i)+" · "+A()[Math.min(i,4)]};S.log="You bought the "+HN2(i).toLowerCase()+". No more rent."}
+function calc(k){if(k==="C")S.cd="";else if(k==="="){try{const r=Function('"use strict";return ('+(S.cd||"0")+')')();S.cd=isFinite(r)?String(Math.round(r*100)/100):"Error"}catch(e){S.cd="Error"}}else{if(S.cd==="Error")S.cd="";if(S.cd.length<20)S.cd+=k}}
+const GL={jobs:'<rect x="4" y="9" width="16" height="11" rx="2"/><path d="M9 9V7a3 3 0 0 1 6 0v2"/>',chat:'<path d="M4 5h16v11H9l-5 4z"/>',bank:'<path d="M3 9l9-5 9 5zM5 11v7M10 11v7M14 11v7M19 11v7M3 20h18"/>',rank:'<path d="M7 4h10v5a5 5 0 0 1-10 0zM5 5H3v2a3 3 0 0 0 3 3M19 5h2v2a3 3 0 0 1-3 3M12 14v4M8 20h8"/>',gov:'<path d="M12 3v18M12 4h8l-2 3 2 3h-8"/>',calc:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M8 15h2M12 15h2M16 11v6"/>'};
+const gl=k=>'<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+GL[k]+'</svg>';
+const APPS=[["Jobs","jobs","#1DB36B",""],["Chat","chat","#2F6FDE","NEW"],["Bank","bank","#F28C28",""],["Rank","rank","#8B5CF6","NEW"],["Gov","gov","#EC4899",""],["Calculator","calc","#3A4A5C",""]];
+function phoneBody(){const ap=S.app,bk='<button class="chip" data-a="app" data-v="">‹ Home</button>';let inner;
+ if(!ap){const n=new Date(),tm=("0"+n.getHours()).slice(-2)+":"+("0"+n.getMinutes()).slice(-2);
+  inner='<div class="clk">'+tm+'</div><p class="pd">'+dfmt(dateOf(S.day))+' · '+S.st+'</p><div class="apps">'+APPS.map(t=>'<button class="appi" data-a="app" data-v="'+t[1]+'"><span class="sq" style="background:'+t[2]+'">'+gl(t[1])+(t[3]?'<em>'+t[3]+'</em>':"")+'</span><span>'+t[0]+'</span></button>').join("")+'</div><p class="pd" style="margin-top:22px">'+(S.ph||"Basic phone")+'</p>'}
+ else if(ap==="calc")inner=bk+'<div class="pscr"><div class="disp">'+(S.cd||"0")+'</div><div class="keys">'+["7","8","9","/","4","5","6","*","1","2","3","-","C","0",".","+"].map(k=>'<button'+("/*-+".indexOf(k)>=0?' class="op"':"")+' data-a="ck" data-v="'+k+'">'+k+'</button>').join("")+'</div><button class="btn" data-a="ck" data-v="=">=</button></div>';
+ else if(ap==="bank"){const t=(S.tx||[]).slice().reverse();inner=bk+'<div class="pscr"><h2>Bank</h2><div class="bal" style="font-size:26px">'+fmtF(S.cash)+'</div><p class="sub">Net worth: '+fmtF(NW())+'</p>'+(S.debt>0?'<p class="sub">Loan balance: '+fmtF(S.debt)+'</p>':"")+'<p class="sub">Loans are at the Bank on the Map. Transfers to players open when the server is connected.</p>'+(t.length?t.map(x=>'<div class="tx"><span>'+x[1]+'</span><span class="'+(x[2]>0?"up":"dn")+'">'+(x[2]>0?"+":"-")+fmt(Math.abs(x[2]))+'</span></div>').join(""):'<p class="sub">No transactions yet.</p>')+'</div>'}
+ else if(ap==="jobs")inner=bk+'<div class="pscr"><h2>Jobs</h2><p class="sub">'+(S.car==="Custom"?"Your job board refreshes every 3 days.":"Offers from other areas show up as you work.")+' Looking now costs '+fmt(1000)+' for data and transport.</p><button class="btn" data-a="lookjobs">'+(S.car==="Custom"?"Refresh the job board":"Look for offers")+'</button></div>'+qjHtml();
+ else if(ap==="rank")inner=rankView(bk);
+ else{const T={chat:["Chat","Chat, voice notes and username search go live once the server is connected."],rank:["Rank","Your state and national rank by net worth go live once the server is connected."],gov:["Gov","Elections for governor, senator and president come after launch."]}[ap];inner=bk+'<div class="pscr"><h2>'+T[0]+'</h2><p class="sub">'+T[1]+'</p></div>'}
+ return '<div class="phone">'+inner+'</div>'}
+const PL=[["bank","Bank",55,70,"#2F6FDE"],["hosp","Hospital",160,70,"#E24B3B"],["mkt","Market",290,70,"#F28C28"],["mall","Mall",55,160,"#8B5CF6"],["est","Real estate",160,160,"#1DB36B"],["park","Motor park",290,160,"#6B7280"]];
+function mapBody(){const st=S.ms||S.st,mine=st===S.st,pl=S.pl||"";
+ const sel='<label for="ms">State</label><select id="ms">'+STATES.map(s=>'<option'+(s===st?" selected":"")+'>'+s+'</option>').join("")+'</select>';
+ if(!mine)return '<h2>Map</h2>'+sel+'<p class="sub">'+st+' is a trip away. Moving costs '+fmt(30000)+' and you pick a new home there.</p>'+(AREAS[st]||[]).map((a,i)=>'<div class="tx"><span>'+a+'</span><span>Pay +'+i*25+'%</span></div>').join("")+'<button class="btn" data-a="reloc">Move to '+st+' · '+fmt(30000)+'</button>';
+ const g=p=>'<g data-a="place" data-v="'+p[0]+'" style="cursor:pointer"><rect x="'+(p[2]-26)+'" y="'+(p[3]-8)+'" width="52" height="38" rx="6" fill="'+p[4]+'"'+(pl===p[0]?' stroke="#fff" stroke-width="4"':"")+'/><rect x="'+(p[2]-26)+'" y="'+(p[3]-8)+'" width="52" height="10" rx="4" fill="#000" fill-opacity=".2"/><rect x="'+(p[2]-35)+'" y="'+(p[3]+34)+'" width="70" height="17" rx="8.5" fill="#fff" fill-opacity=".92"/><text x="'+p[2]+'" y="'+(p[3]+46)+'" text-anchor="middle" font-size="10" font-weight="800" fill="#1B2233">'+p[1]+'</text></g>';
+ const svg='<svg class="map" viewBox="0 0 360 240" role="img" aria-label="Map of '+st+'"><rect width="360" height="240" fill="#A8D58A"/><path d="M0 40H360M0 130H360M0 215H360M105 0V240M215 0V240" stroke="#F4EDE0" stroke-width="9"/><path d="M0 100Q90 70 160 110T360 90" stroke="#6FB6E8" stroke-width="12" fill="none" opacity=".8"/>'+PL.map(g).join("")+'</svg>';
+ const e=ELIG(),opts=[10000,50000,100000,250000,500000].filter(x=>x<=e);
+ const P={
+ bank:()=>'<h2>Bank</h2><p class="sub">Balance '+fmt(S.cash)+'. You can borrow up to '+fmt(e)+', based on what you have earned and repaid.</p>'+(S.debt>0?'<p class="sub">You owe '+fmt(S.debt)+', '+fmt(Math.min(S.dw||12000,S.debt))+' every Saturday.</p><button class="btn alt" data-a="repay">Repay '+fmt(Math.min(Math.max(S.cash,0),S.debt))+' now</button>':"")+(opts.length?opts.map(x=>'<button class="row" data-a="loan" data-v="'+x+'"><span>Borrow '+fmt(x)+'<small>You owe '+fmt(Math.round(x*1.2))+', repaid weekly</small></span></button>').join(""):'<p class="sub">No offers yet. Work and repay to build your record.</p>'),
+ hosp:()=>'<h2>Hospital</h2><p class="sub">A full checkup puts your energy and food back to full.</p><button class="btn" data-a="hosp">Pay '+fmt(hospCost())+'</button>',
+ mkt:()=>'<h2>Market</h2><p class="sub">Hot food at the stalls.</p><button class="btn" data-a="eat">Eat '+fmt(3000)+'</button>',
+ mall:()=>'<h2>Mall</h2><p class="sub">Fabrics and phones.</p><button class="btn" data-a="goto" data-v="buy:Clothes">Shop clothes</button>',
+ est:()=>'<h2>Real estate</h2><p class="sub">Homes to buy once you have paid 4 weeks of rent. Pay it all at once if you can afford it.</p><button class="btn" data-a="goto" data-v="buy:Houses">See houses</button>',
+ park:()=>'<h2>Motor park</h2><p class="sub">Ask around for a better job. It costs '+fmt(1000)+' for transport and data.</p><button class="btn" data-a="lookjobs">Look for offers</button>'};
+ return '<h2>Map</h2>'+sel+svg+(P[pl]?P[pl]():'<p class="sub">Tap a building.</p>')}
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const MEALS=["Eating jollof rice and chicken","Eating pounded yam and egusi","Eating amala and ewedu","Eating ofada rice and stew","Eating moi moi and pap","Eating suya and cold Zobo"];
+const TASKS={"Keke or danfo rider":["Carrying 3 passengers across town","Rushing a market woman and her goods to the park","Hauling students to school before the bell"],"Shop attendant":["Stacking indomie cartons for a wholesale buyer","Serving a long queue before closing","Counting stock with the madam"],"Waiter or waitress":["Carrying 6 plates of jollof to a big table","Serving pepper soup at a wedding","Clearing tables after an owambe crowd"],"POS agent":["Withdrawing ₦50,000 for a market woman","Handling transfers while the network crawls","Delivering cash to a shop owner"],"Food seller":["Frying plantain for the school break rush","Selling 50 wraps of moi moi at the junction","Roasting suya for the night crowd"],"Nurse":["Night shift on the children's ward","Giving injections in a packed clinic","Doing rounds for 12 patients"],"Mechanic":["Fixing a danfo engine before morning","Changing brake pads on a Camry","Welding a bumper for a taxi driver"],"Coder":["Fixing a bug in a fintech app","Building a website for a boutique","Debugging at 2 a.m. before a deadline"],"Musician":["Recording a hook at the studio","Performing at a club night","Shooting a music video on a budget"],"Gamer or streamer":["Streaming to 300 viewers","Winning a Free Fire tournament match","Playing a paid match for a sponsor"],"Alte Baddie":["Hosting a VIP table at the lounge","Shooting content for a sponsor","Working a rooftop party"],"Private Chef":["Cooking 2 pots of jollof for a chief","Cooking egusi for a family of 10","Preparing ofada stew for a late dinner","Plating pepper soup and pounded yam for guests"],"Thief":["Lifting goods from a market stall","Working the motor park crowd","Emptying a parked trailer at night"],"Yahoo Boy":["Working the laptop deep into the night","Waiting on a client to pay up","Moving funds before the bank notices"],"Smuggler":["Hiding rice bags in a truck","Crossing the border at midnight","Loading jerrycans onto a boat"]};
+const CT={"Cleaner":"Cleaning offices after hours","Security guard":"Guarding a gate through the night","Cashier":"Handling a long queue at the till","Factory worker":"Packing cartons on the production line","Delivery rider":"Delivering 12 parcels across town","Store keeper":"Counting stock in the warehouse","Barber assistant":"Sweeping and shaving heads on a busy Saturday","Site labourer":"Mixing cement on a building site"};
+const taskFor=n=>{const k=n.split(" in ")[0];return TASKS[k]?pick(TASKS[k]):(CT[k]||"Putting in work")+(n.indexOf(" in ")>0?" in "+n.split(" in ")[1]:"")};
+function hart(i){const W=(x,y)=>'<rect x="'+x+'" y="'+y+'" width="6" height="7" fill="#FFE98A"/>';let b;
+ if(i===0)b='<rect x="12" y="26" width="40" height="22" fill="#B8865B"/><path d="M8 26L32 12L56 26Z" fill="#8A8F97"/><rect x="28" y="34" width="9" height="14" fill="#6B4423"/>'+W(15,32);
+ else if(i===1)b='<rect x="8" y="24" width="48" height="24" fill="#D7B07A"/><path d="M4 24L32 10L60 24Z" fill="#B9423A"/><rect x="27" y="34" width="10" height="14" fill="#6B4423"/>'+W(12,30)+W(46,30);
+ else if(i===2)b='<rect x="10" y="12" width="44" height="36" fill="#E8E1D0"/><path d="M8 12H56" stroke="#8A6340" stroke-width="3"/><rect x="27" y="36" width="10" height="12" fill="#6B4423"/>'+W(15,18)+W(43,18)+W(15,30)+W(43,30);
+ else if(i===3)b='<rect x="8" y="14" width="48" height="34" fill="#F2EBDD"/><rect x="8" y="14" width="48" height="6" fill="#B9423A"/><rect x="26" y="38" width="12" height="10" fill="#6B4423"/>'+W(12,24)+W(26,24)+W(44,24)+W(12,36)+W(46,36);
+ else if(i>=5)b=(i===5?'<rect x="6" y="20" width="52" height="28" fill="#F2EBDD"/><path d="M2 20L32 6L62 20Z" fill="#7A4B2A"/><rect x="14" y="24" width="4" height="24" fill="#D4AF37"/><rect x="46" y="24" width="4" height="24" fill="#D4AF37"/><rect x="26" y="32" width="12" height="16" fill="#6B4423"/>':'<rect x="4" y="22" width="56" height="26" fill="#E8E1D0"/><rect x="8" y="10" width="20" height="38" fill="#F2EBDD"/><rect x="36" y="14" width="20" height="34" fill="#F2EBDD"/><path d="M4 22H60" stroke="#6B4423" stroke-width="3"/>');else b='<rect x="16" y="2" width="32" height="46" fill="#7FB8E8"/><path d="M16 14H48M16 26H48M16 38H48M32 2V48" stroke="#fff" stroke-opacity=".7" stroke-width="2"/><rect x="28" y="40" width="8" height="8" fill="#2F4A7A"/>';
+ return '<svg viewBox="0 0 64 52" width="58" height="48" aria-hidden="true">'+b+'<rect x="0" y="48" width="64" height="4" fill="#5FA46A"/></svg>'}
+function bgs(){return '<svg class="bg" viewBox="0 0 360 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><g class="sunc"><circle cx="300" cy="60" r="22" fill="#FFD966"/></g><g class="moonc"><circle cx="300" cy="60" r="18" fill="#F4F1DD"/></g><g class="cl1" fill="#fff" fill-opacity=".75"><ellipse cx="60" cy="70" rx="34" ry="10"/><ellipse cx="82" cy="62" rx="22" ry="10"/></g><g class="cl2" fill="#fff" fill-opacity=".5"><ellipse cx="200" cy="110" rx="30" ry="8"/><ellipse cx="218" cy="103" rx="18" ry="8"/></g><path style="fill:var(--sk)" d="M0 300V232h22v-30h26v36h20v-52h30v40h18v-22h24v46h22v-34h28v26h20v-60h30v44h24v-24h26v50h20V300Z"/></svg>'}
+const A=()=>AREAS[S.st]||["Old Town","Market Road","Town Centre","New Layout","GRA"];
+const hi=()=>S.hm?Math.min(4,S.hm.i):0;
+const lvl=j=>1+j*.25;
+const dist=(i,j)=>4+Math.abs(i-j)*5+Math.round(Math.random()*4);
+const GRP={bed1:"bed",bed2:"bed",bed3:"bed",tv1:"tv",tv2:"tv",tv3:"tv",sofa1:"sofa",sofa2:"sofa",sofa3:"sofa",fridge1:"fridge",fridge2:"fridge",fridge3:"fridge"};
+const has=id=>(S.own||[]).some(o=>o===id||GRP[o]===id);
+const fr=()=>has("fridge3")?15:has("fridge2")?10:has("fridge1")?5:0;
+const rentNow=()=>S.hm?(S.hm.own?0:Math.round(S.hm.rent/4)):(S.birth==="Nepo"?150000:25000);
+function makeOffers(){const i=hi(),ar=A();const js=[0,1,2,3,4].filter(j=>j!==i).sort(()=>Math.random()-.5).slice(0,2).sort((a,b)=>b-a);S.offers=js.map(j=>({a:ar[j],km:dist(i,j),m:lvl(j)}));S.ev="offers";S.sh=0;S.nx=5+Math.floor(Math.random()*5)}
+const ILL=["Thief","Yahoo Boy","Smuggler"],NIGHT=["Alte Baddie","Private Chef"],ALL=["ill","night","legal"];
+const cl=(n,a,b)=>Math.min(b,Math.max(a,n)),r1=n=>Math.round(n/1000)*1000,pct=(p,add)=>Math.round(Math.max(S.cash,0)*p+add);
+const DK={
+checkpoint:{p:["ill"],mk(){S.evx={x:cl(r1(S.last*(.3+Math.random()*.4)),10000,100000)}},t:()=>"Police checkpoint on your route. The officers want something before you pass.",o:()=>[["Settle with them: "+fmt(S.evx.x),"Safe"],["Take the long road","Costs 25 energy. Safe"],["Run the checkpoint","50%: extra "+fmt(Math.round(S.last*1.5))+". 50%: caught"]],r(i){if(i===0){if(S.cash>=S.evx.x){S.cash-=S.evx.x;S.log="You paid the police "+fmt(S.evx.x)+". Road clear."}else{S.en=Math.max(0,S.en-25);S.log="You couldn't pay, so you took the long road."}}else if(i===1){S.en=Math.max(0,S.en-25);S.log="You took the long road. Nothing happened."}else if(Math.random()<.5){const g=Math.round(S.last*1.5);S.cash+=g;S.log="You ran it and got away. Extra "+fmt(g)+"."}else caught(S.car)}},
+efcc:{p:["ill"],mk(){S.evx={x:cl(r1(Math.max(S.cash,0)*.06),30000,500000)}},t:()=>"EFCC officers are asking questions about your account.",o:()=>[["Hire a lawyer: "+fmt(S.evx.x),"Safe"],["Move your money to a cousin","60%: safe. 40%: he vanishes with 30% of your cash"],["Ignore them","70%: nothing. 30%: a raid takes 35% of your cash"]],r(i){const raid=()=>{const f=pct(.35,0);S.cash-=f;S.log="EFCC raided you. You lost "+fmt(f)+"."};if(i===0){if(S.cash>=S.evx.x){S.cash-=S.evx.x;S.log="Your lawyer handled it for "+fmt(S.evx.x)+"."}else raid()}else if(i===1){if(Math.random()<.4){const f=pct(.3,0);S.cash-=f;S.log="Your cousin vanished with "+fmt(f)+"."}else S.log="Your money is safe with your cousin."}else if(Math.random()<.3)raid();else S.log="They went quiet. For now."}},
+bigjob:{p:["ill","night"],mk(){S.evx={x:Math.round(S.last*3)}},t:()=>"A big job just came up. It pays well but it's dangerous.",o:()=>[["Take it","Pays "+fmt(S.evx.x)+". 40% you get caught"],["Pass","Stay safe"]],r(i){if(i===0){if(Math.random()<.4)caught(S.car);else{S.cash+=S.evx.x;S.log="The big job went smoothly. You made "+fmt(S.evx.x)+"."}}else S.log="You passed on the big job."}},
+blackmail:{p:["night"],mk(){S.evx={x:cl(r1(S.last*.5),10000,150000)}},t:()=>"A gossip blogger has screenshots of your night out. He wants money to stay quiet.",o:()=>[["Pay him: "+fmt(S.evx.x),"Safe"],["Ignore him","50%: it goes viral and you lose 25% of your cash"]],r(i){if(i===0){if(S.cash>=S.evx.x){S.cash-=S.evx.x;S.log="You paid the blogger "+fmt(S.evx.x)+"."}else S.log="You couldn't pay. The post stays up."}else if(Math.random()<.5){const f=pct(.25,0);S.cash-=f;S.log="The post went viral and clients ran. You lost "+fmt(f)+"."}else S.log="He lost interest."}},
+rush:{p:["legal","night"],mk(){},t:()=>"A client wants a rush job. Double pay, but it costs 20 extra energy.",o:()=>[["Take it","Extra "+fmt(S.last)],["Pass",""]],r(i){if(i===0){if(S.en>=20){S.en-=20;S.cash+=S.last;S.log="Rush job done. Extra "+fmt(S.last)+"."}else S.log="Too tired for the rush job."}else S.log="You passed on the rush job."}},
+raise:{p:["legal"],mk(){},t:()=>"Your oga says work two extra hours unpaid and he will raise your pay.",o:()=>[["Accept","Costs 20 energy. Pay up 8% for good"],["Decline",""]],r(i){if(i===0){if(S.en>=20){S.en-=20;S.pm=Math.min(1.4,(S.pm||1)+.08);S.log="Raise approved. You now earn "+Math.round((S.pm-1)*100)+"% more."}else S.log="Too tired for the extra hours."}else S.log="You turned down the extra hours."}},
+invest:{p:ALL,mk(){S.evx={x:cl(r1(Math.max(S.cash,0)*.1),5000,300000)}},t:()=>"Your cousin has a guaranteed investment. Triple your money in a month, he swears.",o:()=>[["Put in "+fmt(S.evx.x),"40%: you gain "+fmt(Math.round(S.evx.x*1.5))+". 60%: it vanishes"],["Refuse",""]],r(i){if(i===0){if(S.cash<S.evx.x)S.log="You didn't have enough to invest.";else if(Math.random()<.4){const g=Math.round(S.evx.x*1.5);S.cash+=g;S.log="It paid. You gained "+fmt(g)+"."}else{S.cash-=S.evx.x;S.log="The guaranteed investment vanished. You lost "+fmt(S.evx.x)+"."}}else S.log="You refused. Your cousin sulked."}},
+sick:{p:ALL,mk(){S.evx={x:cl(r1(S.last*.3),4000,60000)}},t:()=>"You wake up with a fever. Malaria again.",o:()=>[["Go to the hospital: "+fmt(S.evx.x),"Safe"],["Push through","Costs 20 energy. 30%: you collapse and lose "+fmt(S.evx.x*2)]],r(i){if(i===0){if(S.cash>=S.evx.x){S.cash-=S.evx.x;S.log="The hospital sorted you out for "+fmt(S.evx.x)+"."}else S.log="You couldn't pay. You rested at home."}else{S.en=Math.max(0,S.en-20);if(Math.random()<.3){const f=S.evx.x*2;S.cash-=f;S.log="You collapsed at work. Bills came to "+fmt(f)+"."}else S.log="You pushed through. Strong body."}}},
+friend:{p:ALL,mk(){S.evx={x:cl(r1(Math.max(S.cash,0)*.05),3000,150000)}},t:()=>"A friend begs to borrow "+fmt(S.evx.x)+". He swears he will pay back.",o:()=>[["Lend it","60%: he repays with "+fmt(Math.round(S.evx.x*.3))+" extra. 40%: he disappears"],["Refuse",""]],r(i){if(i===0){if(S.cash<S.evx.x)S.log="You don't have it to lend.";else if(Math.random()<.6){const g=Math.round(S.evx.x*.3);S.cash+=g;S.log="He repaid with extra. You gained "+fmt(g)+"."}else{S.cash-=S.evx.x;S.log="He disappeared with your "+fmt(S.evx.x)+"."}}else S.log="You refused. He hissed and left."}}
+};
+const qw=()=>cl(r1(S.evx.x*1.3+10000),20000,600000);
+const ELIG=()=>cl(r1((S.earn||0)*.25)+(S.rep||0)*30000+15000-S.debt,0,3000000);
+function takeLoan(amt){const t=Math.round(amt*1.2);S.cash+=amt;S.debt+=t;S.dw=Math.max(3000,r1(S.debt/4));S.log="Loan approved: "+fmt(amt)+". You owe "+fmt(t)+", "+fmt(S.dw)+" every Saturday."}
+function startShort(n,why){if(S.ev||S.jail)return;S.ev="short";S.evx={x:Math.max(1000,Math.ceil(n/1000)*1000),why:why}}
+function arrest(n,t,why){t=t||(n==="Yahoo Boy"?"efcc":"police");const c0=Math.max(S.cash,0),pd={r:0,l:0,f:0};let j;
+ if(t==="efcc"){j={t:"efcc",d:137,tot:137,bail:0,end:Date.now()+10*36e5,fr:0,paid:pd};S.log=(why||CAUGHT[n]||"EFCC picked you up")+". Your account is frozen. No bail: you serve 137 days, about 10 hours."}
+ else{const cf=Math.round(c0*.4);S.cash-=cf;j={t:"police",d:50,tot:50,bail:Math.max(850000,r1(c0*.25)),end:Date.now()+(4+Math.random())*36e5,fr:0,paid:pd};S.log=(why||CAUGHT[n]||"Police caught you")+". They took "+fmt(cf)+", 40% of your balance. Bail is "+fmt(j.bail)+", or serve 50 days."}
+ S.jail=j;S.ev=null;S.inv=0}
+DK.short={p:[],mk(){},t:()=>"You're short by "+fmt(S.evx.x)+" for "+S.evx.why+". What do you do?",o:()=>{const e=ELIG(),amt=Math.min(Math.ceil(S.evx.x/5000)*5000,e);return [[e>=5000?"Take a loan: "+fmt(amt):"Take a loan",e>=5000?"You owe "+fmt(Math.round(amt*1.2))+", repaid every Saturday":"Not eligible yet. Earn and repay more first"],["Quick work: about "+fmt(qw()),"Illegal. 30% chance you get arrested"],["Not now",""]]},r(i){if(i===0){const e=ELIG(),amt=Math.min(Math.ceil(S.evx.x/5000)*5000,e);if(e>=5000)takeLoan(amt);else S.log="The bank turned you down. Earn and repay more first."}else if(i===1){S.ic=(S.ic||0)+1;if(Math.random()<.3)arrest("Thief","police","Caught on a quick job");else{const g=qw();S.cash+=g;S.last=g;S.log="Quick work paid "+fmt(g)+".";badTimes("Thief");if(S.ic>=5&&!S.inv)startInv()}}else S.log="You left it for now."}};
+function jailView(){const j=S.jail,k=S.look;S.look=Object.assign({},k,{col:"#E07B1F",out:"Casual",fab:"Plain"});const jv=av(160);S.look=k;const ef=j.t==="efcc",need=Math.max(0,j.bail-S.cash);
+ return '<div class="top"><span>'+(ef?"EFCC custody":"Police custody")+' · '+j.d+' day'+(j.d>1?"s":"")+' left</span><span class="bal">'+fmtF(S.cash)+'</span></div><div class="gist">'+S.log+'</div><div class="room"><svg viewBox="0 0 360 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><rect width="360" height="260" fill="#8C939B"/><rect y="176" width="360" height="84" fill="#6E747B"/><rect x="40" y="30" width="80" height="60" fill="#2A2F36"/>'+[56,72,88,104].map(x=>'<rect x="'+x+'" y="30" width="5" height="60" fill="#B7BDC4"/>').join("")+'<rect x="236" y="116" width="110" height="20" fill="#4B5057"/><rect x="236" y="96" width="110" height="20" fill="#AEB4BA"/><rect x="244" y="136" width="6" height="40" fill="#4B5057"/><rect x="330" y="136" width="6" height="40" fill="#4B5057"/><rect x="150" y="196" width="22" height="26" rx="4" fill="#4B5057"/></svg><div class="av">'+jv+'</div></div><div class="sheet"><h2>'+(ef?"Held by EFCC":"Arrested")+'</h2><p class="sub">Out in <b id="jt">'+jt()+'</b> if you do nothing, or serve the days yourself. Rent and loan bills keep running and hit you when you walk out.</p>'+(ef?'<p class="sub">No bail for EFCC cases. Your account is frozen.</p>':'<button class="btn" data-a="bail"'+(S.cash>=j.bail?"":" disabled")+'>Pay bail: '+fmt(j.bail)+'</button><button class="btn alt" data-a="askf"'+(j.fr||need<=0?" disabled":"")+'>Ask friends to help with bail</button>')+'<button class="btn alt" data-a="serve">Serve a day</button><button class="btn alt" data-a="serve7">Serve 7 days</button></div>'}
+function makeDecision(){const cls=ILL.includes(S.car)?"ill":NIGHT.includes(S.car)?"night":"legal",hs=S.hist||[];let ids=Object.keys(DK).filter(id=>DK[id].p.includes(cls)&&!hs.slice(-3).includes(id));if(!ids.length)ids=Object.keys(DK).filter(id=>DK[id].p.includes(cls));const id=ids[Math.floor(Math.random()*ids.length)];DK[id].mk();S.ev=id;S.hist=hs.concat(id).slice(-6)}
+const HITS={efcc:[["EFCC froze part of your account",.18,20000],["EFCC invited you again",.18,20000],["EFCC is back with a warrant",.22,30000],["EFCC froze the rest of your accounts",.25,40000]],life:[["Thieves visited your house",.12,10000],["A hospital bill hit you",.1,10000],["Your landlord demanded extra",.1,10000],["Your phone and wallet were stolen",.1,5000]]};
+function badTimes(k){
+ if(!S.bad){if(S.cash>150000&&Math.random()<.04){const e=S.bt||0;const rr=Math.random();S.bad={n:e<2?1:e<5?(rr<.7?2:1):(rr<.2?1:rr<.65?2:3),i:0,lean:0,t:ILL.includes(k)?"efcc":"life"}}else return false}
+ if(S.bad.lean>0){S.bad.lean--;return false}
+ const L=HITS[S.bad.t],e=L[(S.bad.i+(S.bt||0))%L.length],loss=Math.round(Math.max(S.cash,0)*e[1]+e[2]);
+ S.cash-=loss;S.bad.i++;S.bad.n--;S.log="Bad times: "+e[0]+". You lost "+fmt(loss)+".";
+ if(S.bad.n>0)S.bad.lean=1;
+ else{if(S.bad.i>=3&&Math.random()<.3){const keep=Math.min(Math.max(S.cash,0),15000);S.log+=" Then you went bankrupt and kept only "+fmt(keep)+".";S.cash=keep}S.bt=(S.bt||0)+1;S.bad=null}
+ return true}
+const JD={"Cleaner":"Cleaning offices after hours. Light work and steady pay.","Security guard":"Guarding a gate through the night. Long hours, safe work.","Cashier":"Running the till through a long queue. Busy but calm.","Factory worker":"Packing cartons on the production line. Hard on the body.","Delivery rider":"Delivering parcels across town. Pay follows how fast you ride.","Store keeper":"Counting and arranging stock in a warehouse. Quiet work.","Barber assistant":"Sweeping, shaving and running errands in a busy shop.","Site labourer":"Mixing cement and carrying blocks. Tough work, decent pay."};
+function jcard(j,i){const p=j.n.split(" in "),k=p[0];return '<button class="jc" data-a="job" data-v="'+i+'"><div class="jt"><b>'+k+'</b><span class="tag">'+(p[1]||"")+' · '+j.km+' km</span></div><p>'+(JD[k]||"A steady job.")+'</p><div class="jm"><span>Pay<b>'+fmt(j.pay)+'</b></span><span>Transport<b>'+fmt(Math.round(j.tp*tpf()))+'</b></span><span>You keep<b class="up">'+fmt(j.pay-Math.round(j.tp*tpf()))+'</b></span></div></button>'}
+function ocard(x,i,c){const tp=Math.round(x.km*250*tpf()),lo=Math.round(c[1]*x.m),hi2=Math.round(c[2]*x.m);return '<button class="jc" data-a="ev" data-v="'+i+'"><div class="jt"><b>'+c[0]+' in '+x.a+'</b><span class="tag">'+x.km+' km</span></div><p>'+((TASKS[c[0]]||[""])[0])+'. '+(x.m>1.4?"A richer area, so better pay.":x.m>1?"A bit better pay.":"Pay is about the same.")+'</p><div class="jm"><span>Pay<b>'+fmt(lo)+'-'+fmt(hi2)+'</b></span><span>Transport<b>'+fmt(tp)+'</b></span><span>You keep<b class="up">'+fmt(Math.max(0,lo-tp))+'+</b></span></div></button>'}
+function decCard(){if(S.inv&&!S.ev)return invCard();if(!S.ev)return rentCard();
+ if(S.ev==="offers"){const c=CAREERS.find(x=>x[0]===S.car);return '<div class="card"><h2>Two job offers</h2><p class="sub">You live in '+A()[hi()]+'. Pick the one that is worth the trip.</p>'+S.offers.map((x,i)=>ocard(x,i,c)).join("")+'<button class="row" data-a="ev" data-v="2"><span>Pass</span></button></div>'}
+ const d=DK[S.ev];if(!d){S.ev=null;return""}const t=d.t(),o=d.o();
+ return '<div class="card"><h2>Decision</h2><p>'+t+'</p>'+o.map((x,i)=>'<button class="row" data-a="ev" data-v="'+i+'"><span>'+x[0]+(x[1]?'<small>'+x[1]+'</small>':"")+'</span></button>').join("")+'</div>'}
+const CAREERS=[["Keke or danfo rider",4500,12000,0],["Shop attendant",4000,10000,0],["Waiter or waitress",4000,11000,0],["POS agent",5000,16000,0],["Food seller",5000,18000,0],["Nurse",9000,20000,0],["Mechanic",6000,18000,0],["Coder",8000,40000,0],["Musician",0,60000,0],["Gamer or streamer",2000,30000,0],["Alte Baddie",10000,55000,.12],["Private Chef",9000,48000,.1],["Thief",15000,100000,.3],["Yahoo Boy",150000,600000,.3],["Smuggler",20000,120000,.25]];
+const POOL=["Cleaner","Security guard","Cashier","Factory worker","Delivery rider","Store keeper","Barber assistant","Site labourer"];
+const CAUGHT={"Thief":"Police caught you","Yahoo Boy":"EFCC raid","Smuggler":"Customs seized your load"};
+const EVENTS=[["NEPA took light. Generator fuel",-3000],["Fuel price jumped. Extra transport",-2000],["POS network went down. Lost sales",-1500],["Okada accident. Repair and medicine",-8000],["Pickpocket at the motor park",-7000],["Landlord raised the service charge",-6000],["Market people collected a levy",-4000],["A friend finally repaid you",5000],["A customer tipped you big",8000]];
+const KEY="nh_save_v2";
+const DEF={scr:"reg",tab:"home",u:"",st:"Lagos",look:{body:"w",hair:"Braids",skin:SKIN[3],out:"Casual",fab:"Plain",col:COLS[0],hat:"",ch:false},tr:[],car:null,birth:null,cash:0,debt:0,en:100,day:1,log:"We no fit lose guard.",board:[],err:"",ev:null,last:0,food:100,start:"",hm:null,sh:0,nx:6,anim:"",fx:"",rc:false,offers:[],task:"",tres:"",own:[],ph:"Basic phone",bc:"Furniture",app:"",cd:"",ms:"",tx:[],rp:0,jail:null,pl:"",dw:0,earn:0,rep:0};let S=JSON.parse(JSON.stringify(DEF));
+try{const x=localStorage.getItem(KEY);if(x)S=Object.assign(S,JSON.parse(x),{err:""})}catch(e){}
+const today=()=>new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10);S.anim="";S.fx="";S.rc=false;if(!S.start)S.start=today();if(S.food==null)S.food=100;if(!OUT.concat(["Street","Guchi","Native","Night","Suit","Agbada","Party","Track"]).includes(S.look.out))S.look.out="Casual";S.own=(S.own||[]).map(x=>({bed:"bed2",tv:"tv2",sofa:"sofa2",fridge:"fridge2",p_and:"p2",p_ip:"p4"})[x]||x);if(S.look.hat==null)S.look.hat="";S.tr=S.tr.filter(t=>TRAITS.includes(t));if(S.jail&&!S.jail.end)S.jail=Object.assign({t:"police",tot:S.jail.d,fr:0,paid:{r:0,l:0,f:0},end:Date.now()+162e5},S.jail);
+const SB_URL="https://yddquspuoqmlcaisfhkl.supabase.co",SB_KEY="sb_publishable__QqMkE3Fu1fk4tzbtn3XmQ_67zgIPxK",SKEY="nh_sess";
+let SESS=null;try{SESS=JSON.parse(localStorage.getItem(SKEY)||"null")}catch(e){}
+const X={rk:null,rm:"nat",busy:false,lm:false,off:false,p:"",d:"",last:"",syncT:null};
+const fakeMail=u=>u.toLowerCase()+"@naijahustle.app";
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
+function setSess(j,u){SESS={access_token:j.access_token,refresh_token:j.refresh_token,uid:(j.user&&j.user.id)||(SESS&&SESS.uid),u:u||(SESS&&SESS.u)||S.u,exp:Date.now()+((j.expires_in||3600)*1000)};try{localStorage.setItem(SKEY,JSON.stringify(SESS))}catch(e){}}
+async function sb(path,o){o=o||{};const hd=Object.assign({apikey:SB_KEY,"Content-Type":"application/json"},o.h||{});if(SESS&&!o.anon)hd.Authorization="Bearer "+SESS.access_token;
+ let r;try{r=await fetch(SB_URL+path,{method:o.m||"GET",headers:hd,body:o.b?JSON.stringify(o.b):undefined,keepalive:!!o.ka})}catch(e){throw Object.assign(new Error("Can't reach the server."),{net:true})}
+ if(r.status===401&&SESS&&!o.anon&&!o.again){if(await refreshSess())return sb(path,Object.assign({},o,{again:1}))}
+ const t=await r.text();let j=null;try{j=t?JSON.parse(t):null}catch(e){}
+ if(!r.ok)throw Object.assign(new Error((j&&(j.msg||j.message||j.error_description||j.error))||("Error "+r.status)),{status:r.status});
+ return j}
+async function refreshSess(){if(!SESS||!SESS.refresh_token)return false;try{const j=await sb("/auth/v1/token?grant_type=refresh_token",{m:"POST",anon:1,b:{refresh_token:SESS.refresh_token}});setSess(j);return true}catch(e){if(!e.net){SESS=null;try{localStorage.removeItem(SKEY)}catch(x){}}return false}}
+async function cloudSignUp(u,p,st){let j;try{j=await sb("/auth/v1/signup",{m:"POST",anon:1,b:{email:fakeMail(u),password:p}})}catch(e){if(!e.net&&/already|registered|exists/i.test(e.message))throw new Error("That username is taken.");throw e}
+ if(!j||!j.access_token)throw new Error("That username is taken.");setSess(j,u);
+ try{await sb("/rest/v1/profiles",{m:"POST",h:{Prefer:"return=minimal"},b:{id:SESS.uid,username:u,state:st,cash:0,net_worth:0}})}
+ catch(e){SESS=null;try{localStorage.removeItem(SKEY)}catch(x){}throw new Error(/duplicate|unique|23505/i.test(e.message)?"That username is taken.":e.message)}}
+async function cloudLogin(u,p){let j;try{j=await sb("/auth/v1/token?grant_type=password",{m:"POST",anon:1,b:{email:fakeMail(u),password:p}})}catch(e){if(!e.net&&/invalid|credential/i.test(e.message))throw new Error("Wrong username or password.");throw e}
+ setSess(j,u);const r=await sb("/rest/v1/profiles?id=eq."+SESS.uid+"&select=username,state,save");
+ if(r&&r[0])return r[0];await sb("/rest/v1/profiles",{m:"POST",h:{Prefer:"return=minimal"},b:{id:SESS.uid,username:u,state:"Lagos",cash:0,net_worth:0}});return{username:u,state:"Lagos",save:null}}
+function adopt(row){const sv=(row&&row.save)||{scr:"look"};sv.u=row.username;sv.st=row.state||sv.st||"Lagos";if(!row.save)sv.scr="look";try{localStorage.setItem(KEY,JSON.stringify(sv))}catch(e){}location.reload()}
+async function cloudResume(){try{const r=await sb("/rest/v1/profiles?id=eq."+SESS.uid+"&select=username,state,save");if(r&&r[0])adopt(r[0])}catch(e){}}
+function schedSync(){if(!SESS||!S.u||S.scr==="reg")return;clearTimeout(X.syncT);X.syncT=setTimeout(()=>cloudSave(false),4000)}
+async function cloudSave(ka){if(!SESS||!S.u||S.scr==="reg")return;const sv=JSON.parse(JSON.stringify(S));delete sv.err;delete sv.anim;delete sv.fx;delete sv.cf;
+ const s=JSON.stringify(sv);if(!ka&&s===X.last)return;X.last=s;
+ try{await sb("/rest/v1/profiles?id=eq."+SESS.uid,{m:"PATCH",ka:ka,h:{Prefer:"return=minimal"},b:{cash:Math.round(S.cash)||0,net_worth:Math.round(NW())||0,state:S.st,save:sv}})}catch(e){X.last=""}}
+async function fetchRank(){if(!SESS)return;X.rkBusy=1;
+ try{const q="/rest/v1/profiles?select=username,state,net_worth&order=net_worth.desc&limit=20";const a=await Promise.all([sb(q),sb(q+"&state=eq."+encodeURIComponent(S.st)),sb("/rest/v1/rpc/my_rank",{m:"POST",b:{}})]);X.rk={nat:a[0]||[],st:a[1]||[],me:(a[2]&&a[2][0])||null};X.rkErr=""}catch(e){X.rkErr="Couldn't load the rank. Check your connection."}
+ X.rkBusy=0;if(S.tab==="phone"&&S.app==="rank")Rk()}
+function rankView(bk){const r=X.rk,m=X.rm||"nat";
+ if(!SESS)return bk+'<div class="pscr"><h2>Rank</h2><p class="sub">Log in with a cloud account to see the rankings.</p></div>';
+ let t='<div class="pscr"><h2>Rank</h2><p class="sub">Ranked by net worth. Yours: '+fmtF(NW())+'</p>'+(r&&r.me?'<p><b>State #'+r.me.state_rank+' · Country #'+r.me.national_rank+'</b></p>':'')+'<div class="chips"><button class="chip'+(m==="nat"?" on":"")+'" data-a="rm" data-v="nat">Country</button><button class="chip'+(m==="st"?" on":"")+'" data-a="rm" data-v="st">'+esc(S.st)+'</button><button class="chip" data-a="rkr">Refresh</button></div>';
+ if(X.rkErr)t+='<p class="err">'+X.rkErr+'</p>';
+ if(!r)t+='<p class="sub">'+(X.rkBusy?"Loading...":"Nothing yet.")+'</p>';
+ else t+=((m==="nat"?r.nat:r.st).map((q,i)=>'<div class="tx"><span>'+(i+1)+'. '+esc(q.username)+(q.username.toLowerCase()===String(S.u).toLowerCase()?" (you)":"")+'<small class="sub"> '+esc(q.state)+'</small></span><span>'+fmtF(q.net_worth)+'</span></div>').join("")||'<p class="sub">Nobody here yet.</p>');
+ return bk+t+'</div>'}
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden")cloudSave(true)});
+window.addEventListener("pagehide",()=>cloudSave(true));
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}schedSync()};
+const rnd=(a,b)=>Math.round(a+Math.random()*(b-a));
+function fmt(n){const a=Math.abs(n),s=n<0?"-":"";if(a>=1e12)return s+"₦"+(a/1e12).toFixed(1)+"tr";if(a>=1e9)return s+"₦"+(a/1e9).toFixed(1)+"bn";if(a>=1e6)return s+"₦"+(a/1e6).toFixed(2)+"m";return s+"₦"+a.toLocaleString("en-NG")}
+const fmtF=n=>(n<0?"-":"")+"₦"+Math.abs(Math.round(n)).toLocaleString("en-NG");
+const hospCost=()=>cl(r1(Math.max(S.cash,0)*.04),15000,3000000);
+const tpf=()=>(S.own||[]).some(x=>/^c_/.test(x))?.5:1;
+const QJ=[["Snatch phones at the motor park",80000,0,"Police","Illegal. Quick hands, quick exit."],["Night out with the chief",250000,0,"Police","Illegal. Keep him happy and keep quiet."],["Rob the estate",600000,0,"Police","Illegal. Big house, big risk."],["Run a 419 mail scam",900000,0,"EFCC","Illegal. Fake investor, real money."],["Launder money for a politician",1500000,0,"EFCC","Illegal. Biggest pay. EFCC is watching."]];
+const qr=q=>.08+.42*(q[1]/1500000);
+function qjHtml(){if(S.qi==null||!QJ[S.qi])S.qi=Math.floor(Math.random()*QJ.length);const i=S.qi,q=QJ[i];return '<div class="pscr" style="margin-top:12px"><h2>Quick jobs</h2><p class="sub">Fast and tempting. Bad times can hit you here too. The more it pays, the likelier you get caught. Illegal works so far: '+(S.ic||0)+' of 5. At 5, EFCC starts investigating you.</p><button class="jc" data-a="qj" data-v="'+i+'"><div class="jt"><b>'+q[0]+'</b><span class="tag">'+q[3]+'</span></div><p>'+q[4]+'</p><div class="jm"><span>Pay<b>'+fmt(q[1])+'</b></span><span>Caught<b class="dn">'+Math.round(qr(q)*100)+'%</b></span><span>Energy<b>25</b></span></div></button><button class="btn alt" data-a="qnext">Show another job</button></div>'}
+function rentCard(){if(!(S.scr==="home"&&S.hm&&!S.hm.own&&(S.rp||0)<4&&rentNow()>0&&S.cash>=rentFull()*1.5&&S.day-(S.rno==null?-9:S.rno)>=3))return"";return '<div class="card"><h2>Pay your rent in full?</h2><p>You can clear the rest of your 4 weeks of rent now for '+fmt(rentFull())+', double the installments. That opens house buying.</p><button class="row" data-a="payrent"><span>Pay it all now</span></button><button class="row" data-a="rentno"><span>Keep paying weekly</span></button></div>'}
+function payRent(){const c=rentFull();if(!S.hm||S.hm.own||(S.rp||0)>=4||S.cash<c)return;S.cash-=c;S.pre=4-(S.rp||0);S.rp=4;S.log="You paid your rent in full for "+fmt(c)+". Houses are now open to you."}
+function startInv(){S.inv=1;S.ic=0;S.log+=" EFCC has opened an investigation into you."}
+function qjob(i){const q=QJ[i];if(!q)return;if(S.en<25){S.log="Too tired. Sleep first.";return}S.qi=null;S.en-=25;S.food=Math.max(0,S.food-8);S.ic=(S.ic||0)+1;
+ if(Math.random()<qr(q)){arrest(q[0],q[3]==="EFCC"?"efcc":"police",q[3]+" caught you on: "+q[0]);return}
+ const g=Math.min(1500000,r1(q[1]*(.9+Math.random()*.2)));S.cash+=g;S.last=g;S.earn=(S.earn||0)+g;S.log="Quick job done: "+q[0]+". You made "+fmt(g)+".";badTimes("Thief");if(S.ic>=5&&!S.inv)startInv()}
+function invCard(){const c=S.cash,big=c>850000,amt=Math.round(c*.3);return '<div class="card"><h2>EFCC is investigating you</h2><p>Your work, quick jobs and purchases are frozen while they look into your account.</p>'+(big?'<button class="row" data-a="invb" data-v="'+amt+'"><span>Pay a bribe: '+fmt(amt)+'<small>30% of your balance. Not guaranteed</small></span></button>':[48000,100000,150000,200000].map(x=>'<button class="row" data-a="invb" data-v="'+x+'"'+(c>=x?"":" disabled")+'><span>Bribe '+fmt(x)+'<small>Cheaper but riskier</small></span></button>').join(""))+'<button class="row" data-a="invw"><span>Let them investigate<small>They may find you guilty. They may leave you alone</small></span></button></div>'}
+function invBribe(amt){if(!S.inv||!(amt>=48000)||amt>S.cash)return;const big=S.cash>850000;S.cash-=amt;S.inv=0;const risk=big?.2:.45-(amt-48000)/152000*.2;if(Math.random()<risk)arrest("Yahoo Boy","efcc","EFCC took your "+fmt(amt)+" and still arrested you");else S.log="You paid "+fmt(amt)+". EFCC dropped the case."}
+function invWait(){if(!S.inv)return;S.inv=0;if(Math.random()<.5)arrest("Yahoo Boy","efcc","EFCC found you guilty");else S.log="EFCC found nothing and closed the file."}
+function askFriends(){const j=S.jail;if(!j||j.t!=="police"||j.fr)return;j.fr=1;const need=j.bail-S.cash;if(need<=0)return;if(Math.random()<.5){const g=Math.min(need,Math.ceil(need*(.4+Math.random()*.6)/1000)*1000);S.cash+=g;S.log="Your friends put together "+fmt(g)+" for you."}else S.log="Your friends heard but nobody sent anything."}
+const jt=()=>{const ms=Math.max(0,S.jail.end-Date.now());return Math.floor(ms/36e5)+"h "+Math.floor(ms%36e5/6e4)+"m "+Math.floor(ms%6e4/1e3)+"s"};
+function serveDays(n){const j=S.jail;if(!j)return;const k=Math.min(n,j.d);
+ for(let q=0;q<k;q++){S.day++;if(dateOf(S.day).getDay()===6){const r=rentNow();if(r>0&&S.pre>0)S.pre--;else if(r>0){const fee=Math.round(r*.05);S.cash-=r+fee;j.paid.r+=r;j.paid.f+=fee}if(S.debt>0){const it=Math.round(S.debt*.05);S.debt+=it;j.paid.f+=it;const p=Math.min(S.dw||12000,S.debt);S.cash-=p;S.debt-=p;j.paid.l+=p}}}
+ j.d-=k;if(j.d<=0){release();return}S.food=Math.max(S.food,60);S.log="You served "+k+" day"+(k>1?"s":"")+". "+j.d+" left. Rent and loan bills are piling up."}
+function release(){const j=S.jail,p=j.paid;let sf=0;if(S.cash<0){sf=-S.cash;S.debt+=sf;S.cash=0;S.dw=Math.max(S.dw||0,r1(S.debt/4),3000)}
+ S.jail=null;S.en=100;S.food=Math.max(S.food,60);S.log="You walked out after "+j.tot+" days. Rent "+fmt(p.r)+", loan payments "+fmt(p.l)+", fees and interest "+fmt(p.f)+" hit you."+(sf?" You could not cover "+fmt(sf)+", so it was added to your debt.":"");
+ if(sf>0||S.cash<50000)S.ev="relbroke"}
+DK.relbroke={p:[],mk(){},t:()=>"You walked out of prison broke. Bills ate everything. What do you do?",o:()=>[["Take a high-interest loan: "+fmt(500000),"You owe "+fmt(750000)+", repaid weekly"],["Quick work: about "+fmt(300000),"Illegal. 70% chance you get arrested again"],["Not now",""]],r(i){if(i===0){S.cash+=500000;S.debt+=750000;S.dw=Math.max(S.dw||0,r1(S.debt/4),3000);S.log="You took the loan. You owe "+fmt(S.debt)+" in total."}else if(i===1){if(Math.random()<.7)arrest("Thief","police","Caught again on a quick job");else{const g=r1(rnd(200000,450000));S.cash+=g;S.ic=(S.ic||0)+1;S.last=g;S.log="Quick work paid "+fmt(g)+".";badTimes("Thief");if(S.ic>=5&&!S.inv)startInv()}}else S.log="You left it for now."}};
+DK.hack={p:[],mk(){},t:()=>"A hacker broke into your account and took "+fmt(S.evx.x)+", 80% of your balance. What do you do?",o:()=>[["Report to the police",""],["Leave it",""]],r(i){S.log=i===0?pick(["The police said they could not find who is responsible.","The officer laughed and told you to get out of the station.","They wrote nothing down and told you to go home."]):"You left it. That money is gone."}};
+function hair(n,c){const k="#111",cap='<path d="M40 36Q40 14 60 14Q80 14 80 36Q72 26 60 26Q48 26 40 36Z" fill="'+k+'"/>';
+ switch(n){
+ case"Afro":return['<circle cx="60" cy="30" r="29" fill="'+k+'"/>',''];
+ case"Braids":return['<rect x="38" y="30" width="6" height="62" rx="3" fill="'+k+'"/><rect x="76" y="30" width="6" height="62" rx="3" fill="'+k+'"/><rect x="46" y="34" width="4" height="48" rx="2" fill="'+k+'"/><rect x="70" y="34" width="4" height="48" rx="2" fill="'+k+'"/>',cap];
+ case"Bun":return['<circle cx="60" cy="9" r="9" fill="'+k+'"/>',cap];
+ case"Ponytail":return['<path d="M78 24Q104 30 98 70Q90 44 78 36Z" fill="'+k+'"/>',cap];
+ case"Gele":return['','<path d="M36 30Q38 4 64 6Q90 6 86 30Q74 18 60 20Q46 18 36 30Z" fill="'+c+'"/><path d="M62 8Q92 -2 94 18Q84 12 70 14Z" fill="'+c+'"/>'];
+ case"Long":return['<path d="M38 30Q38 70 44 96L50 96L50 34ZM82 30Q82 70 76 96L70 96L70 34Z" fill="'+k+'"/>',cap];
+ case"Locs":return['',cap+'<rect x="39" y="28" width="5" height="34" rx="2.5" fill="'+k+'"/><rect x="76" y="28" width="5" height="34" rx="2.5" fill="'+k+'"/><rect x="47" y="24" width="4" height="26" rx="2" fill="'+k+'"/><rect x="69" y="24" width="4" height="26" rx="2" fill="'+k+'"/>'];
+ case"Low cut":return['','<path d="M42 32Q42 18 60 18Q78 18 78 32Q72 24 60 24Q48 24 42 32Z" fill="'+k+'"/>'];
+ default:return['',''];}}
+function av(h){const L=S.look,w=L.body==="w",sk=L.skin,V0=OV[L.out],c=V0?V0[1]:L.col,o=V0?V0[0]:L.out,f=L.fab;
+ const P={"Ankara":'<circle cx="5" cy="5" r="2.6" fill="#fff" fill-opacity=".6"/>',"Adire":'<path d="M0 10L10 0" stroke="#fff" stroke-opacity=".6" stroke-width="2.2"/>',"Aso-oke":'<rect width="3" height="10" fill="#fff" fill-opacity=".5"/>'};
+ let df=(f==="Plain"||o==="Guchi"?"":'<pattern id="pt" width="10" height="10" patternUnits="userSpaceOnUse">'+P[f]+'</pattern>')+(o==="Guchi"?'<pattern id="gm" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M2 6h8M6 2v8" stroke="#D4AF37" stroke-width="1.4"/></pattern>':"");
+ let s=(df?'<defs>'+df+'</defs>':"")+'<ellipse cx="60" cy="236" rx="44" ry="7" fill="#000" fill-opacity=".14"/>';
+ const hr=hair(L.hair,L.col);s+=hr[0];
+ const legs=k=>'<rect x="45" y="120" width="15" height="102" rx="6" fill="'+k+'"/><rect x="60" y="120" width="15" height="102" rx="6" fill="'+k+'"/>';
+ s+='<rect x="46" y="120" width="13" height="104" rx="6" fill="'+sk+'"/><rect x="61" y="120" width="13" height="104" rx="6" fill="'+sk+'"/><rect x="24" y="68" width="11" height="58" rx="5.5" fill="'+sk+'"/><rect x="85" y="68" width="11" height="58" rx="5.5" fill="'+sk+'"/>';
+ const T=w?"M40 70Q40 65 47 65L73 65Q80 65 80 70L76 100Q74 112 78 126L42 126Q46 112 44 100Z":"M36 70Q36 64 44 64L76 64Q84 64 84 70L82 128L38 128Z";
+ const TW="M34 70Q34 64 44 64L76 64Q86 64 86 70L84 130L36 130Z";
+ const sl=n=>'<rect x="23" y="64" width="14" height="'+n+'" rx="6" fill="@"/><rect x="83" y="64" width="14" height="'+n+'" rx="6" fill="@"/>';
+ let under,G,over="",shoe,hat="",tc=c;
+ if(o==="Casual"){under=legs("#35558A")+'<path d="M60 126V218" stroke="#27406A" stroke-width="1.5"/><path d="M47 126Q52 134 58 130M73 126Q68 134 62 130" stroke="#27406A" stroke-width="1.2" fill="none"/>';
+  G=['<path d="'+T+'" fill="@"/>',sl(32)];over='<path d="M51 64Q60 76 69 64Z" fill="'+sk+'"/>';shoe=["#FFFFFF","#D9D9D9"]}
+ else if(o==="Office"){under=w?'<path d="M43 118L77 118L81 174L39 174Z" fill="#20232B"/>':legs("#20232B")+'<rect x="38" y="120" width="44" height="6" fill="#111"/><rect x="57" y="120" width="6" height="6" fill="#C8A64A"/>';
+  G=['<path d="'+T+'" fill="@"/>',sl(w?44:58)];
+  over=w?'<path d="M52 65L60 84L68 65Z" fill="'+sk+'"/>':'<path d="M50 64L60 77L57 64Z" fill="#fff"/><path d="M70 64L60 77L63 64Z" fill="#fff"/><path d="M58 75L62 75L64 100L60 106L56 100Z" fill="#7A1F2B"/>';shoe=["#15151A","#000000"]}
+ else if(o==="Street"||o==="Guchi"){const g=o==="Guchi",J=g?"#1B1B1F":"#3B5B8F",K=g?"#000":"#2F4A7A";tc=g?"#1B1B1F":c;
+  under='<rect x="39" y="120" width="21" height="104" rx="7" fill="'+J+'"/><rect x="60" y="120" width="21" height="104" rx="7" fill="'+J+'"/><path d="M60 128V212" stroke="'+K+'" stroke-width="1.5"/><rect x="37" y="210" width="25" height="11" rx="4" fill="'+K+'"/><rect x="58" y="210" width="25" height="11" rx="4" fill="'+K+'"/>';
+  G=['<path d="'+TW+'" fill="@"/>',sl(58)];
+  over='<ellipse cx="60" cy="63" rx="19" ry="7" fill="'+tc+'"/><path d="M45 108H75L73 124H47Z" fill="#000" fill-opacity=".2"/><rect x="54" y="70" width="2" height="14" fill="#fff"/><rect x="64" y="70" width="2" height="14" fill="#fff"/><rect x="23" y="116" width="14" height="6" rx="3" fill="#000" fill-opacity=".25"/><rect x="83" y="116" width="14" height="6" rx="3" fill="#000" fill-opacity=".25"/>'+(g?'<path d="M60 90l6 8-6 8-6-8z" fill="#D4AF37"/>':"");
+  shoe=["#FFFFFF","#CFCFCF"]}
+ else if(o==="Native"){under=legs("#2A2F3A");
+  G=['<path d="M36 70Q36 64 44 64L76 64Q84 64 84 70L82 170L38 170Z" fill="@"/>',sl(52)];
+  over='<rect x="58" y="64" width="4" height="106" fill="#D4AF37"/><path d="M48 64Q60 80 72 64" stroke="#D4AF37" stroke-width="3" fill="none"/><rect x="38" y="164" width="44" height="6" fill="#D4AF37"/><rect x="23" y="110" width="14" height="6" fill="#D4AF37"/><rect x="83" y="110" width="14" height="6" fill="#D4AF37"/>';shoe=["#3B2A1A","#2A1D12"]}
+ else if(o==="Night"){if(w){under="";G=['<path d="M40 70Q40 65 47 65L73 65Q80 65 80 70L76 100Q74 112 80 150L40 150Q46 112 44 100Z" fill="@"/>'];over='<path d="M50 65Q60 80 70 65Z" fill="'+sk+'"/>';shoe=["#C0392B","#8E2A20"]}
+  else{tc="#20232B";under=legs("#2A2F3A");G=['<path d="'+T+'" fill="@"/>',sl(26)];over='<path d="M52 64L60 82L68 64Z" fill="'+sk+'"/>';shoe=["#15151A","#000000"]}}
+ else{under=legs("#A88B4A")+'<rect x="46" y="170" width="13" height="10" rx="3" fill="#8F7438"/><rect x="61" y="170" width="13" height="10" rx="3" fill="#8F7438"/>';
+  G=['<path d="'+T+'" fill="@"/>',sl(58)];
+  over='<path d="M41 66L53 66L60 80L67 66L79 66L77 126L43 126Z" fill="#F28C28"/><rect x="42" y="98" width="36" height="5" fill="#FFE98A"/><rect x="42" y="112" width="36" height="5" fill="#FFE98A"/>';shoe=["#5B3A1E","#3F2814"];
+  hat='<path d="M41 28Q41 8 60 8Q79 8 79 28Z" fill="#F7C51E"/><rect x="37" y="26" width="46" height="5" rx="2.5" fill="#E0AE10"/>'}
+ if(!hat&&L.hat==="Beanie")hat='<path d="M41 28Q41 8 60 8Q79 8 79 28Z" fill="#E24B3B"/><rect x="39" y="25" width="42" height="7" rx="3.5" fill="#B73A2D"/><circle cx="60" cy="7" r="3.5" fill="#fff"/>';
+ if(!hat&&L.hat==="Fila")hat='<path d="M41 28Q41 12 60 12Q79 12 79 28Z" fill="#1F6F3B"/><rect x="39" y="25" width="42" height="4" rx="2" fill="#fff"/><rect x="62" y="25" width="22" height="4" rx="2" fill="#14532D"/>';
+ if(L.ch)over+='<path d="M50 68Q60 90 70 68" stroke="#D4AF37" stroke-width="2.5" fill="none"/><circle cx="60" cy="86" r="3" fill="#D4AF37"/>';
+ s+=under+'<rect x="41" y="220" width="21" height="12" rx="5" fill="'+shoe[0]+'"/><rect x="58" y="220" width="21" height="12" rx="5" fill="'+shoe[0]+'"/><rect x="41" y="228" width="21" height="4" rx="2" fill="'+shoe[1]+'"/><rect x="58" y="228" width="21" height="4" rx="2" fill="'+shoe[1]+'"/>';
+ s+=G.map(x=>x.replace(/@/g,tc)).join("");
+ if(o==="Guchi")s+=G.map(x=>x.replace(/@/g,"url(#gm)")).join("");else if(f!=="Plain"&&o!=="Night")s+=G.map(x=>x.replace(/@/g,"url(#pt)")).join("");
+ s+=over+'<rect x="54" y="54" width="12" height="12" fill="'+sk+'"/><circle cx="60" cy="38" r="19" fill="'+sk+'"/><circle cx="53" cy="37" r="1.9" fill="#111"/><circle cx="67" cy="37" r="1.9" fill="#111"/><path d="M54 46Q60 50 66 46" stroke="#111" stroke-width="1.6" fill="none" stroke-linecap="round"/>'+hr[1]+hat;
+ return '<svg viewBox="0 0 120 240" height="'+(h||290)+'" role="img" aria-label="Your character, full body">'+s+'</svg>'}
+const ISV={
+ mat:'<rect x="18" y="156" width="92" height="12" rx="5" fill="#8BA6C7"/><rect x="22" y="150" width="26" height="9" rx="4" fill="#fff"/>',
+ bed:'<rect x="14" y="128" width="104" height="40" rx="5" fill="#B9423A"/><path d="M14 142H118M40 128V168M66 128V168" stroke="#9A322B" stroke-width="2"/><rect x="14" y="116" width="104" height="22" rx="5" fill="#F4EDE0"/><rect x="20" y="118" width="30" height="14" rx="6" fill="#fff"/><rect x="14" y="164" width="6" height="14" fill="#6B4423"/><rect x="112" y="164" width="6" height="14" fill="#6B4423"/>',
+ fan:'<path d="M196 0V20" stroke="#555" stroke-width="3"/><g class="fan"><circle cx="196" cy="24" r="5" fill="#444"/><ellipse cx="170" cy="24" rx="24" ry="4" fill="#6B5A47"/><ellipse cx="222" cy="24" rx="24" ry="4" fill="#6B5A47"/></g>',
+ tv:'<rect x="130" y="150" width="60" height="6" rx="2" fill="#6B4423"/><rect x="136" y="156" width="5" height="22" fill="#6B4423"/><rect x="179" y="156" width="5" height="22" fill="#6B4423"/><rect x="140" y="124" width="40" height="26" rx="3" fill="#1b1b1f"/><rect class="tv" x="143" y="127" width="34" height="20" rx="2" fill="#7FB8FF"/>',
+ rug:'<ellipse cx="200" cy="232" rx="78" ry="12" fill="#B9423A" fill-opacity=".85"/><ellipse cx="200" cy="232" rx="62" ry="8" fill="#F4EDE0" fill-opacity=".5"/>',
+ plant:'<rect x="236" y="146" width="16" height="20" rx="2" fill="#B5651D"/><path d="M244 146Q232 128 238 118Q246 130 244 146ZM244 146Q256 128 250 116Q242 130 244 146Z" fill="#2E9B57"/>',
+ poster:'<rect x="208" y="38" width="34" height="46" rx="3" fill="#2F6FDE"/><rect x="213" y="43" width="24" height="36" fill="#F7C51E"/><path d="M216 70l8-14 8 14Z" fill="#1DB36B"/>',
+ chair:'<rect x="120" y="148" width="14" height="4" fill="#C0392B"/><rect x="120" y="136" width="4" height="14" fill="#C0392B"/><rect x="121" y="152" width="3" height="16" fill="#8E2A20"/><rect x="130" y="152" width="3" height="16" fill="#8E2A20"/>',
+ wardrobe:'<rect x="328" y="62" width="30" height="106" rx="3" fill="#6B4423"/><path d="M343 62V168" stroke="#4E3016" stroke-width="2"/><circle cx="339" cy="118" r="2" fill="#E8C66A"/><circle cx="347" cy="118" r="2" fill="#E8C66A"/>',
+ sofa:'<rect x="14" y="198" width="92" height="30" rx="8" fill="#2F6FDE"/><rect x="14" y="188" width="92" height="18" rx="8" fill="#3F82F0"/><rect x="10" y="196" width="12" height="32" rx="6" fill="#2A63C9"/><rect x="98" y="196" width="12" height="32" rx="6" fill="#2A63C9"/>',
+ fridge:'<rect x="198" y="92" width="30" height="78" rx="3" fill="#E9EEF2"/><path d="M198 124H228" stroke="#9AA7B2" stroke-width="2"/><rect x="222" y="104" width="3" height="14" fill="#9AA7B2"/><rect x="222" y="132" width="3" height="20" fill="#9AA7B2"/>',
+ gen:'<rect x="286" y="196" width="46" height="28" rx="4" fill="#C0392B"/><rect x="292" y="204" width="20" height="12" fill="#222"/><path d="M286 196L296 186H322L332 196" stroke="#555" stroke-width="3" fill="none"/>'};
+const ISV2={ac:'<rect x="170" y="40" width="36" height="16" rx="4" fill="#F3F6F8"/><path d="M174 52H202" stroke="#9AA7B2" stroke-width="2"/><circle cx="198" cy="46" r="2" fill="#1DB36B"/>',console:'<rect x="168" y="141" width="18" height="9" rx="2" fill="#111"/><circle cx="172" cy="145" r="1.6" fill="#3AA0FF"/>',dtable:'<rect x="118" y="204" width="72" height="8" rx="2" fill="#7A4B2A"/><rect x="124" y="212" width="5" height="18" fill="#5B3A1E"/><rect x="179" y="212" width="5" height="18" fill="#5B3A1E"/><ellipse cx="154" cy="203" rx="10" ry="3" fill="#fff"/>'};
+const VB2={ac:"166 36 44 24",console:"164 138 26 14",dtable:"114 198 80 36",lamp:"244 172 26 62",shelf:"200 176 42 58",sound:"130 168 60 14"};
+ISV2.lamp='<rect x="255" y="190" width="4" height="42" fill="#5B3A1E"/><ellipse cx="257" cy="231" rx="9" ry="3" fill="#3F2814"/><path d="M246 190L268 190L262 174L252 174Z" fill="#F7C51E"/>';
+ISV2.shelf='<rect x="204" y="180" width="34" height="52" rx="2" fill="#7A4B2A"/><path d="M204 197H238M204 214H238" stroke="#5B3A1E" stroke-width="2"/><rect x="208" y="184" width="6" height="12" fill="#E24B3B"/><rect x="216" y="186" width="5" height="10" fill="#2F6FDE"/><rect x="224" y="183" width="7" height="13" fill="#1DB36B"/><rect x="209" y="201" width="8" height="12" fill="#F28C28"/><rect x="222" y="203" width="10" height="10" fill="#8B5CF6"/>';
+ISV2.sound='<rect x="134" y="172" width="52" height="6" rx="3" fill="#222"/><circle cx="140" cy="175" r="2" fill="#3AA0FF"/>';
+const tvSvg=(w,h)=>'<rect x="130" y="150" width="60" height="6" rx="2" fill="#6B4423"/><rect x="136" y="156" width="5" height="22" fill="#6B4423"/><rect x="179" y="156" width="5" height="22" fill="#6B4423"/><rect x="'+(160-w/2)+'" y="'+(150-h)+'" width="'+w+'" height="'+h+'" rx="3" fill="#1b1b1f"/><rect class="tv" x="'+(163-w/2)+'" y="'+(153-h)+'" width="'+(w-6)+'" height="'+(h-6)+'" rx="2" fill="#7FB8FF"/>';
+const sofaSvg=n=>{const c=n===3?["#5B3A1E","#6E4726","#4A2F18"]:n===2?["#2F6FDE","#3F82F0","#2A63C9"]:["#7C8FA6","#8FA3BA","#6D8098"],w=n===1?70:92;return '<rect x="14" y="198" width="'+w+'" height="30" rx="8" fill="'+c[0]+'"/><rect x="14" y="188" width="'+w+'" height="18" rx="8" fill="'+c[1]+'"/><rect x="10" y="196" width="12" height="32" rx="6" fill="'+c[2]+'"/><rect x="'+(14+w-8)+'" y="196" width="12" height="32" rx="6" fill="'+c[2]+'"/>'};
+const fridgeSvg=n=>n===1?'<rect x="198" y="124" width="26" height="46" rx="3" fill="#E9EEF2"/><path d="M198 140H224" stroke="#9AA7B2" stroke-width="2"/>':n===2?ISV.fridge:'<rect x="196" y="88" width="38" height="82" rx="3" fill="#C9CED6"/><path d="M215 88V170M196 124H234" stroke="#8A939C" stroke-width="2"/><rect x="209" y="100" width="3" height="16" fill="#6B747D"/><rect x="218" y="100" width="3" height="16" fill="#6B747D"/>';
+const bed3=()=>ISV.bed.replace(/#B9423A/g,"#2F3E9E").replace(/#9A322B/g,"#26337F");
+const bedSvg=()=>has("bed3")?bed3():has("bed2")?ISV.bed:ISV.mat;
+function roomItems(){const o=has;let s="";
+ if(o("rug"))s+=ISV.rug;if(o("fan"))s+=ISV.fan;if(o("ac"))s+=ISV2.ac;if(o("poster"))s+=ISV.poster;if(o("plant"))s+=ISV.plant;
+ if(o("tv")){const t=o("tv3")?[54,34]:o("tv2")?[40,26]:[30,20];s+=tvSvg(t[0],t[1])}
+ if(o("console"))s+=ISV2.console;if(o("wardrobe"))s+=ISV.wardrobe;if(o("fridge"))s+=fridgeSvg(o("fridge3")?3:o("fridge2")?2:1);
+ if(o("chair"))s+=ISV.chair;if(o("sofa"))s+=sofaSvg(o("sofa3")?3:o("sofa2")?2:1);if(o("dtable"))s+=ISV2.dtable;if(o("gen"))s+=ISV.gen;if(o("lamp"))s+=ISV2.lamp;if(o("shelf"))s+=ISV2.shelf;if(o("sound"))s+=ISV2.sound;return s}
+function room(){const hr=new Date().getHours(),nt=hr>=19||hr<6,dim=S.log.indexOf("NEPA took light")>=0&&!has("gen");
+ const sky=nt?'<rect x="40" y="40" width="72" height="62" fill="#1B2A4A"/><circle cx="98" cy="58" r="8" fill="#F4F1DD"/><circle cx="58" cy="54" r="1.5" fill="#fff"/><circle cx="76" cy="84" r="1.5" fill="#fff"/>':'<rect x="40" y="40" width="72" height="62" fill="#BFE0FA"/><circle cx="96" cy="58" r="9" fill="#FFD966"/><ellipse cx="62" cy="76" rx="16" ry="5" fill="#fff"/>';
+ const I=ISV;
+ const items=roomItems();
+ return '<div class="room'+(S.anim==="sleep"?" night":"")+(dim?" dim":"")+'"><svg viewBox="0 0 360 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><rect width="360" height="170" fill="#E3D2B0"/><rect y="164" width="360" height="8" fill="#9C7348"/><path d="M0 172H360V260H0Z" fill="#C79A66"/><path d="M0 200H360M0 232H360M90 172L40 260M180 172V260M270 172L320 260" stroke="#B3844F" stroke-width="2" fill="none"/>'
+ +'<rect x="34" y="34" width="84" height="74" rx="4" fill="#8A6340"/>'+sky+'<path d="M76 40V102M40 71H112" stroke="#8A6340" stroke-width="4"/><path d="M34 34Q46 70 38 108H52Q60 70 52 34Z" fill="#E1624B" fill-opacity=".9"/><path d="M118 34Q106 70 114 108H100Q92 70 100 34Z" fill="#E1624B" fill-opacity=".9"/>'
+ +'<circle cx="152" cy="52" r="15" fill="#fff" stroke="#6B4423" stroke-width="3"/><path d="M152 52V42M152 52L160 56" stroke="#222" stroke-width="2"/>'
+ +'<rect x="262" y="40" width="60" height="124" rx="4" fill="#7A4B2A"/><circle cx="310" cy="106" r="3" fill="#E8C66A"/><rect x="270" y="50" width="44" height="34" rx="3" fill="#8F5C37"/>'
+ +bedSvg()+items
+ +'</svg><div class="av'+(S.anim?" a-"+S.anim:"")+'">'+av(160)+'</div>'+(S.fx?'<span class="fx">'+S.fx+'</span>':"")+(S.task?'<div class="bub"><b>'+S.task+'</b>'+(S.tres?'<span>'+S.tres+'</span>':"")+'</div>':"")+'</div>'}
+function adult(d){if(!d)return false;const b=new Date(d),n=new Date();let a=n.getFullYear()-b.getFullYear();const m=n.getMonth()-b.getMonth();if(m<0||(m===0&&n.getDate()<b.getDate()))a--;return a>=18&&a<110}
+function board(){const t=S.cash>200000?2:S.cash>50000?1:0;S.board=[...POOL].sort(()=>Math.random()-.5).slice(0,5).map(n=>{const j=Math.floor(Math.random()*5),km=dist(hi(),j),base=rnd(5000,10000)*(1+t*.4)*lvl(j);return{n:n+" in "+A()[j],km:km,pay:Math.round(base/100)*100,tp:km*250}})}
+const rate=a=>a>=100000?.25:a>=50000?.15:a>=20000?.07:0;
+function dateOf(n){const d=new Date(S.start+"T12:00:00");d.setDate(d.getDate()+n-1);return d}
+const dfmt=d=>d.toLocaleDateString("en-NG",{weekday:"short",day:"numeric",month:"short",year:"numeric"});
+const DEC={rush:["A client wants a rush job. Double pay, but it costs 20 extra energy.",["Take it","Pass"]],check:["Trouble ahead. What do you do?",["Settle with ₦8,000","Lie low (-25 energy)","Take the risk"]]};
+function caught(n){if(Math.random()<.3){arrest(n);return}const f=Math.round(Math.max(S.cash,0)*.3+5000);S.cash-=f;S.log=(CAUGHT[n]||"Scandal hit the gist")+". You lost "+fmt(f)+"."}
+function work(c){const cost=S.tr.includes("Strong Body")?20:25;
+ if(S.en<cost){S.log="Too tired. Sleep first.";return}
+ if(S.food<8){S.log="Too hungry to work. Eat first.";return}
+ S.en-=cost;S.food-=8;S.sh++;const lean=S.bad&&S.bad.lean>0;let pay=Math.round(rnd(c.min,c.max)*(c.mult||1)*(S.pm||1)*(lean?.3:1)*(((c.k||c.n)==="Gamer or streamer"&&has("console"))?1.15:1));if(S.tr.includes("Hustle Pro"))pay=Math.round(pay*1.1);pay-=Math.round((c.tp||0)*tpf());
+ if(c.risk&&Math.random()<c.risk)caught(c.k||c.n);
+ else{const t=pay>0?Math.round(pay*(rate(pay)+((c.k||c.n)==="Yahoo Boy"?.15:0))):0;S.cash+=pay-t;S.last=pay-t;S.earn=(S.earn||0)+Math.max(0,pay-t);S.log="You made "+fmt(pay)+(t?" and tax took "+fmt(t):"")+" as "+c.n+".";if(ILL.includes(c.k||c.n)){S.ic=(S.ic||0)+1;if(S.ic>=5)startInv()}}
+ if(lean&&S.log.indexOf("You made")===0)S.log+=" Slow day, low pay.";
+ S.task=taskFor(c.k||c.n);S.tres=S.log.indexOf("You made")===0?"+"+fmt(S.last):"Caught";
+ if(badTimes(c.k||c.n))return;
+ const r=Math.random();
+ if(r<.15){const e=EVENTS[rnd(0,EVENTS.length-1)];if(e[0].indexOf("NEPA")===0&&has("gen"))S.log+=" NEPA took light but your generator saved you.";else{S.cash+=e[1];S.log+=" "+e[0]+": "+(e[1]>0?"+":"-")+fmt(Math.abs(e[1]))+"."}}
+ else if(S.car!=="Custom"&&S.sh>=S.nx&&S.last>0)makeOffers();
+ else if(S.cash>150000&&Math.random()<.02){const x=Math.round(S.cash*.8);S.cash-=x;S.evx={x:x};S.ev="hack"}
+ else if(r<.4&&S.last>0)makeDecision()}
+function resolve(i){const e=S.ev;S.ev=null;
+ if(e==="offers"){const o=S.offers[i];if(!o){S.log="You passed on both offers.";return}const c=CAREERS.find(x=>x[0]===S.car);work({n:c[0]+" in "+o.a,k:c[0],min:c[1],max:c[2],risk:c[3],mult:o.m,tp:o.km*250});return}
+ if(DK[e])DK[e].r(i)}
+function sleep(){S.day++;S.food-=34;const hungry=S.food<=0;if(S.food<0)S.food=0;S.en=hungry?(has("ac")?80:60):(has("bed3")||has("bed2")?100:has("bed1")?90:75);const d=dateOf(S.day);
+ S.log=(hungry?"You slept hungry. ":"")+"New day: "+dfmt(d)+".";
+ if(d.getDay()===6){const r=rentNow();if(r>0&&S.pre>0){S.pre--;S.rp=(S.rp||0)+1;S.log+=" Saturday: rent already paid in full."}else if(r>0){S.cash-=r;S.rp=(S.rp||0)+1;S.log+=" Saturday: rent installment "+fmt(r)+" paid."}else S.log+=" Saturday: no rent, you own your home.";if(S.debt>0){const p=Math.min(S.dw||12000,S.debt);S.cash-=p;S.debt-=p;S.log+=" Loan repayment "+fmt(p)+".";if(S.debt<=0){S.rep=(S.rep||0)+1;S.dw=0}}}
+ if(S.cash<0&&!S.jail)startShort(-S.cash,"rent and bills");
+ if(S.car==="Custom"&&S.day%3===0){board();S.log+=" New job offers are in."}}
+function pickBirth(){if(S.car==="Custom")S.birth="Lapo";else if(S.car==="Yahoo Boy")S.birth="Nepo";else S.birth=Math.random()<.5?"Nepo":"Lapo";
+ if(S.birth==="Nepo"){S.cash=rnd(1500000,1800000);S.debt=0}else{S.cash=60000;S.debt=60000}S.dw=S.debt?12000:0;S.earn=0;S.rep=0;S.jail=null;S.start=today();S.food=100;S.day=1;S.en=100;S.ev=null;if(S.car==="Custom")board()}
+const D=n=>'<div class="dash">'+[1,2,3,4,5].map(i=>'<i'+(i<=n?' on':'')+'></i>').join("")+'</div>';
+const chips=(a,list,cur)=>'<div class="chips">'+list.map(x=>'<button class="chip'+(cur===x?" on":"")+'" data-a="'+a+'" data-v="'+x+'">'+x+'</button>').join("")+'</div>';
+const sws=(a,list,cur)=>'<div class="chips">'+list.map(x=>'<button class="chip sw'+(cur===x?" on":"")+'" style="background:'+x+'" aria-label="Colour" data-a="'+a+'" data-v="'+x+'"></button>').join("")+'</div>';
+const foot=(t,a,v,ok)=>'<div class="foot"><button class="btn" data-a="'+a+'" data-v="'+v+'"'+(ok===false?" disabled":"")+'>'+t+'</button></div>';
+const V={
+reg(){const lg=X.lm;return '<h1>Naija Hustle</h1><p class="sub">We no fit lose guard. '+(lg?"Log in to pick up where you stopped.":"Make your name and get your hustle on.")+'</p><div class="card"><label for="u">Username</label><input id="u" maxlength="15" autocomplete="username" autocapitalize="none" value="'+esc(S.u)+'" placeholder="e.g. oga_kelvin"><label for="p">Password'+(lg?"":" (8 or more characters)")+'</label><input id="p" type="password" autocomplete="'+(lg?"current-password":"new-password")+'" value="'+esc(X.p)+'">'+(lg?"":'<label for="st">Your state</label><select id="st">'+STATES.map(s=>'<option'+(s===S.st?' selected':'')+'>'+s+'</option>').join("")+'</select><label for="d">Date of birth (18+ only)</label><input id="d" type="date" value="'+esc(X.d)+'">')+'<p class="err" id="e">'+S.err+'</p><button class="btn"'+(X.busy?" disabled":"")+' data-a="'+(lg?"login":"reg")+'">'+(X.busy?"One moment...":(lg?"Log in":"Create account"))+'</button>'+(X.off?'<button class="btn alt" data-a="offline">Play offline (saves on this phone only)</button>':"")+'</div><p class="sub center"><button class="chip" data-a="lmode">'+(lg?"New here? Create an account":"Already have an account? Log in")+'</button></p>'},
+welcome(){return '<div class="center pop"><h1 style="margin-top:60px">Welcome to Naija Hustle, @'+S.u+'</h1><p class="sub">'+S.st+' is waiting for you.</p></div><div class="card"><p><b>Work</b> to earn. Your career is your only income.</p><p><b>Eat and sleep</b> or you run out of energy.</p><p><b>Rent</b> is due every Saturday.</p><p style="margin:0"><b>Rank</b> is live in your Phone. Your progress saves to the cloud.</p></div>'+foot("Create your character","to","look")},
+look(){const L=S.look,w=L.body==="w";return '<div class="stage">'+bgs()+D(1)+av(280)+'</div><div class="sheet"><h2>Pick your look</h2><p class="sub">All free for now. More clothes are in the Buy menu later.</p><label>Body</label>'+chips("body",["Woman","Man"],w?"Woman":"Man")+'<label>Skin tone</label>'+sws("skin",SKIN,L.skin)+'<label>Hair</label>'+chips("hair",w?HW:HM,L.hair)+'<label>Outfit</label>'+chips("out",OUT,L.out)+'<label>Fabric</label>'+chips("fab",FAB,L.fab)+'<label>Colour</label>'+sws("col",COLS,L.col)+'</div>'+foot("Next: traits","to","traits")},
+traits(){const n=S.tr.length;return '<div class="stage">'+bgs()+D(2)+av(220)+'</div><div class="sheet"><h2>Choose 3 traits</h2><p class="sub">'+n+' of 3 chosen. Hustle Pro grows pay. Strong Body saves energy. Jollof Lover gets more from food.</p>'+'<div class="chips">'+TRAITS.map(t=>'<button class="chip'+(S.tr.includes(t)?" on":"")+'" data-a="tr" data-v="'+t+'">'+t+'</button>').join("")+'</div>'+'</div>'+foot("Next: career","to","career",n===3)},
+career(){return '<div class="stage">'+bgs()+D(3)+av(200)+'</div><div class="sheet"><h2>Choose your career</h2><p class="sub">Or take Custom and pick jobs from a job board.</p>'+CAREERS.map(c=>'<button class="row" data-a="car" data-v="'+c[0]+'"><span>'+c[0]+'</span></button>').join("")+'<button class="row" data-a="car" data-v="Custom"><span>Custom: choose your own path</span></button><button class="btn alt" data-a="to" data-v="traits">Back</button></div>'},
+birth(){const n=S.birth==="Nepo";return '<div class="stage">'+bgs()+D(4)+av(240)+'</div><div class="sheet center pop"><p class="sub">The birth dice have rolled. This is your hand in '+S.st+'.</p><div class="big">'+(n?"Nepo baby":"Lapo baby")+'</div><p style="margin-top:10px">'+(n?"Your people have connections and a fat account. Rent is heavy too, so spend with sense.":"No cushion and no connections. You get a ₦60,000 start-up loan and owe ₦12,000 every week. Move smart.")+'</p><div class="bal" style="font-size:32px">'+fmt(S.cash)+'</div></div>'+foot("Choose where to live","to","house")},
+house(){const R=rents(),N=hnames(),ds=S.birth==="Nepo"?HDN:HD,cc=CAREERS.find(x=>x[0]===S.car),avg=cc?(cc[1]+cc[2])/2:7000;return '<div class="stage">'+bgs()+D(5)+av(190)+'</div><div class="sheet"><h2>Choose where to live</h2><p class="sub">Prices are per month, paid in 4 weekly installments every Saturday. Your area decides which jobs reach you.</p>'+A().map((a,i)=>{const w=Math.round(R[i]/4),ok=i===0||S.cash>=w*2+9000;return '<button class="row" data-a="move" data-v="'+i+'"'+(ok?"":" disabled")+'><span class="hico">'+hart(i)+'</span><span style="flex:1">'+N[i]+' · '+a+'<small>'+(ok?ds[i]+" About "+Math.max(1,Math.ceil(w/avg))+(Math.ceil(w/avg)>1?" shifts":" shift")+" of rent a week.":"Too pricey for now")+'</small></span><span>'+fmt(R[i])+'<small>per month · '+fmt(w)+'/wk</small></span></button>'}).join("")+'</div>'},
+home(){if(S.jail)return jailView();const T=S.tab;const d=dateOf(S.day),dl=(6-d.getDay()+7)%7;
+ let top='<div class="top"><span>'+dfmt(d)+'</span><span class="bal">'+fmtF(S.cash)+'</span></div><div class="stats"><span>Energy<span class="bar e" role="progressbar" aria-label="Energy" aria-valuenow="'+S.en+'" aria-valuemin="0" aria-valuemax="100"><i style="width:'+S.en+'%"></i></span></span><span>Food<span class="bar f" role="progressbar" aria-label="Food" aria-valuenow="'+S.food+'" aria-valuemin="0" aria-valuemax="100"><i style="width:'+S.food+'%"></i></span></span></div><div class="gist">'+S.log+'</div>'+decCard();
+ let body;
+ if(T==="home"){body=(S.car==="Custom"?'<h2>Job board</h2><p class="sub">New offers every 3 days. Far jobs pay more but cost transport.</p>'+S.board.map(jcard).join(""):'<h2>'+S.car+'</h2><button class="btn" style="margin-top:6px" data-a="shift">Work a shift</button>')+'<div class="duo"><button class="chip duoc" data-a="eat">Eat ₦3,000<small>+'+((S.tr.includes("Jollof Lover")?50:34)+fr())+' food</small></button><button class="chip duoc" data-a="sleep">Sleep<small>Next day</small></button></div>'+(S.debt>0?'<p class="sub">Loan balance: '+fmt(S.debt)+'</p>':"")+'<p class="sub">Net worth '+fmtF(NW())+'</p><p class="sub">'+(rentNow()?"Rent "+fmt(rentNow()):"No rent")+(S.debt>0?" and loan "+fmt(Math.min(S.dw||12000,S.debt)):"")+" due "+(dl===0?"today":"Saturday, in "+dl+" days")+'.</p><p class="sub">@'+S.u+' · '+S.st+' · '+S.birth+(S.hm?" · "+S.hm.name:"")+(SESS?" · cloud save on":" · offline")+'</p>'+(S.rc?'<div class="chips"><button class="chip" data-a="reset2">Yes, start a new life</button><button class="chip" data-a="reset0">Cancel</button></div>':'<div class="chips"><button class="chip" data-a="reset">New life</button>'+(SESS?'<button class="chip" data-a="logout">Log out</button>':'')+'</div>')}
+ else body=T==="buy"?buyBody():T==="map"?mapBody():phoneBody();
+ return top+(T==="home"||T==="buy"?room():"")+'<div class="sheet">'+body+'</div><div class="tabs" role="tablist">'+["home","buy","map","phone"].map(t=>'<button class="tab'+(T===t?" on":"")+'" data-a="tab" data-v="'+t+'">'+t[0].toUpperCase()+t.slice(1)+'</button>').join("")+'</div>'}
+};
+function R(){document.getElementById("app").innerHTML=V[S.scr]()+modal();save();window.scrollTo(0,0)}
+function Rk(){const y=window.scrollY;document.getElementById("app").innerHTML=V[S.scr]()+modal();save();window.scrollTo(0,y)}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-a]");if(!b)return;const a=b.dataset.a,v=b.dataset.v,L=S.look;if(S.ev&&["shift","job","eat","sleep","qj"].includes(a))return;if(S.inv&&["shift","job","qj","buy","bh","cfy"].includes(a)){S.log="EFCC is investigating you. No work and no buying until it is settled.";Rk();return}if(S.jail&&["qj","invb","invw","shift","job","eat","sleep","tab","buy","bh","bc","wear","app","ck","reloc","move","place","goto","loan","repay","hosp","lookjobs","cfy","cfn"].includes(a))return;const c0=S.cash;
+ if(a==="reg"){const u=document.getElementById("u").value.trim(),p=document.getElementById("p").value,d=document.getElementById("d").value;S.u=u;S.st=document.getElementById("st").value;X.p=p;X.d=d;
+  if(!/^[A-Za-z0-9_]{3,15}$/.test(u))S.err="Username must be 3 to 15 letters, numbers or underscores.";
+  else if(p.length<8||p==="12345678")S.err="Password needs at least 8 characters and can't be 12345678.";
+  else if(!adult(d))S.err="You must be 18 or older to play Naija Hustle.";
+  else{S.err="";X.busy=true;R();cloudSignUp(u,p,S.st).then(()=>{X.busy=false;X.off=false;X.p="";X.d="";S.scr="welcome";R()}).catch(e=>{X.busy=false;X.off=!!e.net;S.err=e.net?"Can't reach the server. Check your internet.":e.message;R()});return}R();return}
+ if(a==="body"){L.body=v==="Woman"?"w":"m";L.hair=L.body==="w"?HW[0]:HM[0]}
+ else if(a==="hair")L.hair=v;else if(a==="skin")L.skin=v;else if(a==="out")L.out=v;else if(a==="fab")L.fab=v;else if(a==="col")L.col=v;
+ else if(a==="tr"){const i=S.tr.indexOf(v);if(i>=0)S.tr.splice(i,1);else if(S.tr.length<3)S.tr.push(v)}
+ else if(a==="car"){S.car=v;pickBirth();S.scr="birth";R();return}
+ else if(a==="to"){S.scr=v;R();return}
+ else if(a==="enter"){S.scr="home";S.tab="home";R();return}
+ else if(a==="tab"){S.tab=v;S.app="";R();return}
+ else if(a==="shift"){const c=CAREERS.find(x=>x[0]===S.car);work({n:c[0],min:c[1],max:c[2],risk:c[3]})}
+ else if(a==="job"){const j=S.board[+v];work({n:j.n,min:j.pay,max:j.pay,tp:j.tp,risk:0})}
+ else if(a==="eat"){if(S.cash>=3000){S.cash-=3000;S.food=Math.min(100,S.food+(S.tr.includes("Jollof Lover")?50:34)+fr());S.en=Math.min(100,S.en+10);S.log="Jollof and chicken. Food up."}else{S.log="No money for food.";startShort(3000-Math.max(S.cash,0),"food")}}
+ else if(a==="sleep")sleep();
+ else if(a==="ev"){resolve(+v)}
+ else if(a==="bc"){S.bc=v}
+ else if(a==="buy"){S.cf=v}
+ else if(a==="bh"){S.cf="h:"+v}
+ else if(a==="cfn"){S.cf=""}
+ else if(a==="cfy"){const id=S.cf;S.cf="";if(id.indexOf("h:")===0)doBuyHouse(+id.slice(2));else doBuy(id)}
+ else if(a==="wear"){const q=v.split(":");if(q[0]==="out")L.out=q[1];else if(q[0]==="fab")L.fab=q[1];else if(q[0]==="hat")L.hat=q[1]==="None"?"":q[1];else if(q[0]==="ch")L.ch=q[1]==="On"}
+ else if(a==="app"){S.app=v;if(v==="rank")fetchRank()}
+ else if(a==="ck"){calc(v)}
+ else if(a==="place"){S.pl=v}
+ else if(a==="goto"){const q=v.split(":");S.tab=q[0];if(q[1])S.bc=q[1];S.app=""}
+ else if(a==="loan"){if(+v<=ELIG())takeLoan(+v)}
+ else if(a==="repay"){const p=Math.min(Math.max(S.cash,0),S.debt);if(p>0){S.cash-=p;S.debt-=p;S.log="You repaid "+fmt(p)+" of your loan.";if(S.debt<=0){S.rep=(S.rep||0)+1;S.dw=0;S.log+=" Loan cleared."}}}
+ else if(a==="hosp"){const hc=hospCost();if(S.cash>=hc){S.cash-=hc;S.en=100;S.food=100;S.log="The doctor sorted you out for "+fmt(hc)+". Energy and food are full."}else{S.log="You can't pay the hospital yet.";startShort(hc-Math.max(S.cash,0),"the hospital")}}
+ else if(a==="lookjobs"){if(S.cash>=1000){S.cash-=1000;if(S.car==="Custom"){board();S.log="The job board is fresh."}else makeOffers()}else S.log="You can't pay for the trip."}
+ else if(a==="bail"){if(S.jail&&S.jail.t!=="efcc"&&S.cash>=S.jail.bail){S.cash-=S.jail.bail;S.log="You paid bail of "+fmt(S.jail.bail)+" and walked out.";S.jail=null}}
+ else if(a==="serve"||a==="serve7"){serveDays(a==="serve"?1:7)}
+ else if(a==="askf"){askFriends()}
+ else if(a==="qj"){qjob(+v)}
+ else if(a==="qnext"){let n;do{n=Math.floor(Math.random()*QJ.length)}while(n===S.qi&&QJ.length>1);S.qi=n}
+ else if(a==="invb"){invBribe(+v)}
+ else if(a==="invw"){invWait()}
+ else if(a==="payrent"){payRent()}
+ else if(a==="rentno"){S.rno=S.day}
+ else if(a==="reloc"){const st=S.ms;if(st&&st!==S.st&&S.cash>=30000){S.cash-=30000;S.st=st;S.hm=null;S.rp=0;S.pre=0;S.ms="";S.board=[];S.log="You travelled to "+st+". Find a place to live.";S.scr="house";S.tab="home";R();return}S.log="You can't afford the trip yet."}
+ else if(a==="lmode"){X.lm=!X.lm;S.err="";X.off=false;R();return}
+ else if(a==="login"){const u=document.getElementById("u").value.trim(),p=document.getElementById("p").value;S.u=u;X.p=p;
+  if(!/^[A-Za-z0-9_]{3,15}$/.test(u))S.err="Username must be 3 to 15 letters, numbers or underscores.";
+  else if(!p)S.err="Enter your password.";
+  else{S.err="";X.busy=true;R();cloudLogin(u,p).then(r=>{X.p="";adopt(r)}).catch(e=>{X.busy=false;S.err=e.net?"Can't reach the server. Check your internet.":e.message;R()});return}
+  R();return}
+ else if(a==="offline"){X.off=false;X.p="";X.d="";S.err="";S.scr="welcome";R();return}
+ else if(a==="logout"){cloudSave(true);SESS=null;try{localStorage.removeItem(SKEY);localStorage.removeItem(KEY)}catch(x){}location.reload();return}
+ else if(a==="rm"){X.rm=v}
+ else if(a==="rkr"){fetchRank()}
+ else if(a==="reset"){S.rc=true}
+ else if(a==="reset0"){S.rc=false}
+ else if(a==="reset2"){const u=S.u,st=S.st;try{localStorage.removeItem(KEY)}catch(x){}S=JSON.parse(JSON.stringify(DEF));S.u=u;S.st=st;S.start=today();S.scr="look";R();return}
+ else if(a==="move"){const i=+v,r=rents()[i],w=Math.round(r/4);if(i>0&&S.cash<w*2+9000)return;S.hm={i:i,rent:r,name:hnames()[i]+" · "+A()[i]};S.rp=0;S.pre=0;S.cash-=w;S.log="You moved into a "+hnames()[i].toLowerCase()+" in "+A()[i]+". First weekly installment paid.";S.scr="home";S.tab="home";S.task="";S.tres="";if(S.car==="Custom")board();R();return}
+ if(S.cash!==c0)S.tx=(S.tx||[]).concat([[S.day,S.log.slice(0,64),S.cash-c0]]).slice(-12);
+ const AN={shift:"work",job:"work",eat:"eat",sleep:"sleep"};
+ if(AN[a]&&S.scr==="home"){S.anim=AN[a];S.fx=a==="eat"?"Yum":a==="sleep"?"Zzz":"";if(a==="eat"&&S.log.indexOf("No money")!==0){S.task=pick(MEALS);S.tres="-₦3,000"}else if(a==="sleep"){S.task="Sleeping off a long day";S.tres=dfmt(dateOf(S.day))}const k=++T;setTimeout(()=>{if(k===T){S.anim="";S.fx="";Rk()}},a==="sleep"?1800:1000)}
+ Rk()});
+document.addEventListener("change",e=>{if(e.target.id==="ms"){S.ms=e.target.value;Rk()}});
+setInterval(()=>{if(!S.jail)return;if(Date.now()>=S.jail.end){serveDays(S.jail.d);R();return}const e=document.getElementById("jt");if(e)e.textContent=jt()},1000);
+if(SESS&&Date.now()>SESS.exp-60000)refreshSess();
+if(SESS&&S.scr==="reg"&&!S.u)cloudResume();
+R();
+</script>
+</body>
+</html>
